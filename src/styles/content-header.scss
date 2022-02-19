@@ -24,11 +24,11 @@
 
     &.small, &.mobile {
         $mobile-scale: 0.75;
-        
+
         p {
             font-size: calc(1.375rem * $mobile-scale);
             letter-spacing: calc(0.5rem * $mobile-scale);
-            margin-bottom: calc(1rem * $mobile-scale);
+            margin-bottom: 0;
         }
 
         #line {

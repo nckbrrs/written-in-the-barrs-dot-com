@@ -113,12 +113,11 @@ form {
 
 *.small, *.mobile {
     $mobile-scale: 0.75;
-    
+
     form {
-        width: calc(333px * $mobile-scale);
+        width: 275px;
 
         p {
-            font-size: calc(1rem * $mobile-scale);
             margin-top: calc(1.75rem * $mobile-scale);
             margin-bottom: calc(0.5rem * $mobile-scale);
             letter-spacing: calc(0.375rem * $mobile-scale);
@@ -130,48 +129,20 @@ form {
 
         .formRow {
             input {
-                padding-left: calc(10px * $mobile-scale);
                 margin: calc(5px * $mobile-scale);
-                border-radius: calc(6px * $mobile-scale);
-                height: calc(2rem * $mobile-scale);
-                font-size: calc(0.75rem * $mobile-scale);
-
-                &::placeholder {
-                    font-size: calc(0.75rem * 2/3);
-                }
-
-                &:hover {
-                    box-shadow: 0 0 0 calc(2px * $mobile-scale) rgba(0, 0, 0, 0.333);
-                }
 
                 &:focus {
-                    box-shadow: 0 0 0 calc(2px * $mobile-scale) #C2986E;
+                    box-shadow: 2px solid #C2986E;
                 }
             }
 
             select {
-                padding-left: calc(10px * $mobile-scale);
                 margin: calc(5px * $mobile-scale);
-                border-radius: calc(6px * $mobile-scale);
-                height: calc(2rem * $mobile-scale);
-                font-size: calc(0.75rem * $mobile-scale);
 
                 &:focus {
-                    box-shadow: 0 0 0 calc(2px * $mobile-scale) #CFAD8C;
-                }
-
-                &:hover:not(:focus) {
-                    box-shadow: 0 0 0 calc(2px * $mobile-scale) rgba(0, 0, 0, 0.333);
+                    border: 2px solid #CFAD8C;
                 }
             }
-        }
-
-        button {
-            margin: calc(20px * $mobile-scale) calc(5px * $mobile-scale) calc(5px * $mobile-scale) calc(5px * $mobile-scale);
-            border-radius: calc(6px * $mobile-scale);
-            font-size: calc(0.875rem * $mobile-scale);
-            letter-spacing: calc(0.25rem * $mobile-scale);
-            padding: calc(11px * $mobile-scale);
         }
     }
 }
