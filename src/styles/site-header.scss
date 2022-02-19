@@ -1,0 +1,52 @@
+@font-face { font-family: 'Weiss'; src: url('../assets/fonts/weiss.otf'); }
+@font-face { font-family: 'Paris'; src: url('../assets/fonts/paris.otf'); }
+
+#site-header {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    color: #A96D4F;
+    margin-bottom: 1rem;
+
+    p {
+        &:nth-of-type(1) {
+            margin-top: 1rem;
+            font-size: 3rem;
+            margin-bottom: 0;
+            font-family: 'Weiss', script;
+            letter-spacing: auto;
+
+            span {
+                font-family: 'Paris', script;
+            }
+        }
+
+        &:nth-of-type(2) {
+            margin-top: -1rem;
+            font-size: 1rem;
+            letter-spacing: 0.375rem;
+            font-weight: 300;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.small, &.mobile {
+        p {
+            &:nth-of-type(1) {
+                margin-top: calc(1rem * 2 / 3);
+                font-size: calc(3rem * 2 / 3);
+            }
+
+            &:nth-of-type(2) {
+                margin-top: calc(-1rem * 2 / 3);
+                font-size: calc(1rem * 2 / 3);
+                letter-spacing: calc(0.375rem * 2 / 3);
+            }
+        }
+    }
+}
