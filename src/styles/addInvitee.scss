@@ -2,11 +2,16 @@
 
 #addInvitee {
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
     animation: fadeIn 1.6s;
+
+    &.small, &.mobile {
+        max-height: 650px;
+    }
 }
 
 #thanks-text {
@@ -17,4 +22,10 @@
     color: #A96D4F;
     opacity: 0;
     transition: 2s;
+
+    &.small, &.mobile {
+        $mobile-scale: 0.75;
+
+        font-size: calc(3rem * $mobile-scale);
+    }
 }
