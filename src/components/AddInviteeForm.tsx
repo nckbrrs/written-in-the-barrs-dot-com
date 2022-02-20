@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { capitalizeFirstLetter } from '../assets/utils';
 import '../styles/addInvitee.scss';
 
 interface AddInviteeFormProps {
@@ -35,8 +34,8 @@ const AddInviteeForm: React.FC<AddInviteeFormProps> = (props) => {
         }
 
         const postBody = {
-            "firstName": capitalizeFirstLetter(firstName),
-            "lastName": capitalizeFirstLetter(lastName),
+            "firstName": firstName,
+            "lastName": lastName,
             "emailAddress": emailAddress,
             "phoneNumber": phoneNumber,
             "address1": addressLine1,
