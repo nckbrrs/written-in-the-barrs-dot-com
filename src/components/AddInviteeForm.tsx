@@ -57,7 +57,7 @@ const AddInviteeForm: React.FC<AddInviteeFormProps> = (props) => {
             "dietaryRestrictions": ""
         }
 
-        const response: Response = await fetch('/api/addInvitee', {
+        const response: Response = await fetch('/.netlify/functions/server/addInvitee', {
             body: JSON.stringify(postBody),
             headers: {
                 'Content-Type': 'application/json',

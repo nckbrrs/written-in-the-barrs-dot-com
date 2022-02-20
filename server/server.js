@@ -7,18 +7,18 @@ const redis = require('./redis');
 const app = express();
 const router = express.Router();
 
-router.post('/api/addInvitee', async (req, res) => {
+router.post('/addInvitee', async (req, res) => {
     console.log(req.body);
     const id = await redis.addInvitee(req.body);
     res.status(200).json({ id });
 });
 
-router.get('/api/createInviteeIndex', async (req, res) => {
+router.get('/createInviteeIndex', async (req, res) => {
     await redis.createInviteeIndex();
     res.status(200).send('invitee index created!');
 });
 
-router.get('/api/searchInvitees', async (req, res) => {
+router.get('/searchInvitees', async (req, res) => {
     const invitees = await redis.searchInvitees(req.query.first, req.query.last);
     res.status(200).json({ invitees });
 });
