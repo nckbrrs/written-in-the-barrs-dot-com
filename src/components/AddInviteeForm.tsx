@@ -57,8 +57,9 @@ const AddInviteeForm: React.FC<AddInviteeFormProps> = (props) => {
             "dietaryRestrictions": ""
         }
 
-        const response: Response = await fetch('/.netlify/functions/server/addInvitee', {
+        const response: Response = await fetch('https://written-in-the-barrs-backend.herokuapp.com/invitees', {
             body: JSON.stringify(postBody),
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -9,23 +9,22 @@
     justify-content: flex-start;
     animation: fadeIn 1.6s;
 
+    #thanks-text {
+        display: none;
+        font-size: 3rem;
+        font-family: 'Weiss', script;
+        text-align: center;
+        color: #A96D4F;
+        opacity: 0;
+        transition: 2s;
+    }
+
     &.small, &.mobile {
         max-height: 650px;
-    }
-}
 
-#thanks-text {
-    display: none;
-    font-size: 3rem;
-    font-family: 'Weiss', script;
-    text-align: center;
-    color: #A96D4F;
-    opacity: 0;
-    transition: 2s;
-
-    &.small, &.mobile {
-        $mobile-scale: 0.75;
-
-        font-size: calc(3rem * $mobile-scale);
+        #thanks-text {
+            $mobile-scale: 0.75;
+            font-size: calc(3rem * $mobile-scale);
+        }
     }
 }

@@ -6,7 +6,6 @@ import { WindowSizes } from './types/types';
 import useWindowSize from './assets/useWindowSize';
 import { WindowSizeContext } from './assets/windowSizeContext';
 import './styles/globals.scss';
-require('dotenv').config();
 
 const App:React.FC = () => {
 	const windowSize: WindowSizes = useWindowSize();
