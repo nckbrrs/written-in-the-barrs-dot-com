@@ -25,7 +25,7 @@ router.get('/api/searchInvitees', async (req, res) => {
 
 router.get('/hello', async (req, res) => {
     res.status(200).json({ message: 'hello!' })
-});ª
+});
 
 app.use(express.json());
 app.use(pino);
