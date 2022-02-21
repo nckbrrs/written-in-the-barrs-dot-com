@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/addInvitee.scss';
 
 interface AddInviteeFormProps {
@@ -68,9 +68,26 @@ const AddInviteeForm: React.FC<AddInviteeFormProps> = (props) => {
         setSubmissionResponse(response);
     };
 
+    useEffect(() => {
+        if (submissionResponse !== null) {
+            const inviteeFormElement = document.getElementById('addInviteeForm');
+            const thanksTextElement = document.getElementById('thanks-text');
+
+            if (inviteeFormElement !== null && thanksTextElement !== null) {
+                inviteeFormElement.style.opacity = '0';
+                thanksTextElement.style.display = 'flex';
+
+                setTimeout(() => {
+                    inviteeFormElement.style.display = 'none'
+                    thanksTextElement.style.opacity = '1';
+                }, 1000)
+            }
+        }
+    }, [submissionResponse])
+
     return (
         <>
-            <form id="addInviteeForm" style={submissionResponse !== null ? {'display': 'none', 'opacity': '0'} : {}} onSubmit={handleSubmit}>
+            <form id="addInviteeForm" onSubmit={handleSubmit}>
                 <p>Name</p>
                 <div className="formRow">
                     <input name="firstName" placeholder="First Name" type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)}/>
@@ -110,7 +127,7 @@ const AddInviteeForm: React.FC<AddInviteeFormProps> = (props) => {
                 }
                 <button type="submit">Submit</button>
             </form>
-            <p id="thanks-text" style={submissionResponse !== null ? {'display': 'flex', 'opacity': '1'} : {}}>
+            <p id="thanks-text">
                 {   submissionResponse !== null && submissionResponse.status === 200
                     ?
                     <>Thank you!<br/>We&apos;ll be in touch.</>
