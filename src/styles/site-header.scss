@@ -36,24 +36,3 @@
         cursor: pointer;
     }
 }
-
-@media only screen and (max-width: 800px) {
-    /*
-    #site-header {
-        $mobile-scale: 0.75;
-
-        p {
-            &:nth-of-type(1) {
-                margin-top: calc(1rem * $mobile-scale);
-                font-size: calc(3rem * $mobile-scale);
-            }
-
-            &:nth-of-type(2) {
-                margin-top: calc(-1rem * $mobile-scale);
-                font-size: calc(1rem * $mobile-scale);
-                letter-spacing: calc(0.375rem * $mobile-scale);
-            }
-        }
-    }
-    */
-}
