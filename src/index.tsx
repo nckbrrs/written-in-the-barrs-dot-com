@@ -2,13 +2,14 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AddInvitee from "./views/AddInvitee";
+import AllInvitees from "./views/AllInvitees";
 import { WindowSizes } from './types/types';
-import useWindowSize from './assets/useWindowSize';
 import { WindowSizeContext } from './assets/windowSizeContext';
+import useWindowSize from './assets/useWindowSize';
 import './styles/globals.scss';
 
 const App:React.FC = () => {
-	const windowSize: WindowSizes = useWindowSize();
+	const windowSize: WindowSizes = useWindowSize();``
 
 	return (
 		<div id="App" className="App">
@@ -22,6 +23,11 @@ const App:React.FC = () => {
 					<Route exact path="/invitees" render={() => (
 						<WindowSizeContext.Provider value={windowSize}>
 							<AddInvitee hasPlusOne={true}/>
+						</WindowSizeContext.Provider>
+					)}/>
+					<Route exact path="/allInvitees" render={() => (
+						<WindowSizeContext.Provider value={windowSize}>
+							<AllInvitees/>
 						</WindowSizeContext.Provider>
 					)}/>
 					<Route path="*" render={() => (
