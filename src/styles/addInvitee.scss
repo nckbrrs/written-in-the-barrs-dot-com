@@ -18,8 +18,11 @@
         opacity: 0;
         transition: 1s;
     }
+}
 
-    &.small, &.mobile {
+@media only screen and (max-width: 800px) {
+    /*
+    #addInvitee {
         max-height: 650px;
 
         #thanks-text {
@@ -27,4 +30,5 @@
             font-size: calc(3rem * $mobile-scale);
         }
     }
+    */
 }

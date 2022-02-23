@@ -35,8 +35,11 @@
     &:hover {
         cursor: pointer;
     }
+}
 
-    &.small, &.mobile {
+@media only screen and (max-width: 800px) {
+    /*
+    #site-header {
         $mobile-scale: 0.75;
 
         p {
@@ -52,4 +55,5 @@
             }
         }
     }
+    */
 }

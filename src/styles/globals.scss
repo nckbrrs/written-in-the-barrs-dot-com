@@ -1,7 +1,7 @@
 html, body {
   padding: 0;
   margin: 0;
-  font-family: Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 * {
@@ -14,7 +14,7 @@ form {
     align-items: left;
     justify-content: flex-start;
     text-align: left;
-    width: 333px;
+    width: 20rem;
     transition: 1s;
 
     p {
@@ -40,22 +40,23 @@ form {
 
         input {
             width: 100%;
-            padding-left: 10px;
-            margin: 5px;
-            border-radius: 6px;
+            padding-left: 0.75rem;
+            margin: .333rem;
+            border-radius: 0.333rem;
             height: 2rem;
             border: none;
             background: #ffffff;
             outline: none;
             font-family: 'Helvetica Neue', sans-serif;
             transition: 0.3s;
+            color: #333333;
 
             &:hover {
-                box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.333);
+                box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.333);
             }
 
             &:focus {
-                box-shadow: 0 0 0 2px #C2986E;
+                box-shadow: 0 0 0 0.15rem #C2986E;
 
                 &::placeholder {
                     color: black;
@@ -65,9 +66,9 @@ form {
 
         select {
             width: 100%;
-            padding-left: 10px;
-            margin: 5px;
-            border-radius: 6px;
+            padding-left: 0.75rem;
+            margin: 0.333rem;
+            border-radius: 0.333rem;
             height: 2rem;
             border: none;
             outline: none;
@@ -77,15 +78,19 @@ form {
             background: #ffffff url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 140' width='16' height='16' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='black'/></g></svg>") no-repeat;
             background-position: right 5px top 60%;
             font-family: 'Helvetica Neue', sans-serif;
-            color: black;
+            color: #333333;
             transition: 0.3s;
 
-            &:focus {
-                box-shadow: 0 0 0 2px #CFAD8C;
+            &:hover {
+                box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.333);
             }
 
-            &:hover:not(:focus) {
-                box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.333);
+            &:focus {
+                box-shadow: 0 0 0 0.15rem #C2986E;
+
+                &::placeholder {
+                    color: black;
+                }
             }
         }
     }
@@ -111,7 +116,11 @@ form {
     }
 }
 
-*.small, *.mobile {
+@media only screen and (max-width: 800px) {
+    html, body {
+        font-size: 12px;
+    }
+    /*
     $mobile-scale: 0.75;
 
     form {
@@ -145,7 +154,9 @@ form {
             }
         }
     }
+    */
 }
+
 
 @keyframes fadeIn {
     0%   { opacity: 0; }

@@ -1,19 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import SiteHeader from '../components/SiteHeader';
 import ContentHeader from '../components/ContentHeader';
-import { WindowSizes } from '../types/types';
-import { WindowSizeContext } from '../assets/windowSizeContext';
 import '../styles/allInvitees.scss';
 
 const AllInvitees: React.FC = () => {
-    const windowSize: WindowSizes = useContext(WindowSizeContext);
     const [allInvitees, setAllInvitees] = useState([]);
     const [enteredPassword, setEnteredPassword] = useState('');
-
-    const classNames = () => {
-        const classNames: string[] = [windowSize];
-        return classNames.join(' ');
-    }
 
     useEffect(() => {
         const getAllInvitees = async () => {
@@ -35,7 +27,7 @@ const AllInvitees: React.FC = () => {
     }, [])
 
     return (
-        <div id="allInvitees" className={classNames()}>
+        <div id="allInvitees">
             <SiteHeader/>
             <ContentHeader title={`ALL RESPONSES IN DATABASE (${allInvitees.length})`}/>
             {   enteredPassword !== process.env.REACT_APP_NANDB_PW &&

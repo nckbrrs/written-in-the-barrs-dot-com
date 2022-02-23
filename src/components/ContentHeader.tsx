@@ -1,6 +1,4 @@
 import React from 'react';
-import { WindowSizes } from '../types/types';
-import useWindowSize from '../assets/useWindowSize';
 import '../styles/content-header.scss';
 
 interface ContentHeaderProps {
@@ -8,15 +6,8 @@ interface ContentHeaderProps {
 }
 
 const ContentHeader: React.FC<ContentHeaderProps> = (props) => {
-    const windowSize: WindowSizes = useWindowSize();
-
-    const classNames = () => {
-        const classNames: string[] = [windowSize];
-        return classNames.join(' ');
-    }
-
     return (
-        <div id="content-header" className={classNames()}>
+        <div id="content-header">
             <p>{props.title}</p>
             <div id="line"/>
         </div>
