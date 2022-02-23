@@ -9,13 +9,15 @@
     justify-content: flex-start;
     animation: fadeIn 1.6s;
     margin-bottom: 2rem;
+    padding: 0 4rem;
 
     .response {
         font-family: 'Weiss', script;
         margin: 1rem;
         padding: 1rem;
         font-size: 1rem;
-        width: 50%;
+        width: 30rem;
+
         border-radius: 0.5rem;
         box-shadow: 0 0 0 0.125rem #A96D4F, 0.5rem 0.5rem 0.75rem #333333;
         background-color: white;
@@ -23,6 +25,16 @@
         p {
             color: #A96D4F;
             font-weight: bold;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #allInvitees {
+        padding: 0 4rem;
+
+        .response {
+            width: 100%;
         }
     }
 }

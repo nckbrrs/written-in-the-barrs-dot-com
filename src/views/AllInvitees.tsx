@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { capitalizeFirstLetter } from '../assets/utils';
 import SiteHeader from '../components/SiteHeader';
 import ContentHeader from '../components/ContentHeader';
 import '../styles/allInvitees.scss';
@@ -41,7 +42,7 @@ const AllInvitees: React.FC = () => {
             {   enteredPassword === process.env.REACT_APP_NANDB_PW &&
                 allInvitees.map((response: any) => (
                     <div className="response" key={response.entityId}>
-                        <p className="responseName">{response.firstName.trim()} {response.lastName.trim()} { response.hasPlusOne ? ` and ${response.plusOneFirstName.trim()} ${response.plusOneLastName.trim()}` : ``}</p>
+                        <p className="responseName">{capitalizeFirstLetter(response.firstName.trim())} {capitalizeFirstLetter(response.lastName.trim())} { response.hasPlusOne ? ` and ${response.plusOneFirstName.trim()} ${response.plusOneLastName.trim()}` : ``}</p>
                         <p className="responseAddrDigital">{response.emailAddress} / {response.phoneNumber}</p>
                         <p className="responseAddrPhysical">{`${response.address1.trim()}${response.address2.trim() !== "" ? " " + response.address2.trim() : ''}`}<br/>{response.city.trim()}, {response.state.trim()} {response.zipCode.trim()}</p>
                     </div>
