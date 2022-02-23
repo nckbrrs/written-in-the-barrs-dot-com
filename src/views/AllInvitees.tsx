@@ -17,7 +17,7 @@ const AllInvitees: React.FC = () => {
 
     useEffect(() => {
         const getAllInvitees = async () => {
-            await fetch('http://localhost:5000/invitees/all', {
+            await fetch('https://written-in-the-barrs-backend.herokuapp.com/invitees/all', {
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
