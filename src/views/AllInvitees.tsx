@@ -37,7 +37,7 @@ const AllInvitees: React.FC = () => {
     return (
         <div id="allInvitees" className={classNames()}>
             <SiteHeader/>
-            <ContentHeader title={"ALL INVITEES IN DATABASE"}/>
+            <ContentHeader title={`ALL RESPONSES IN DATABASE (${allInvitees.length})`}/>
             {   enteredPassword !== process.env.REACT_APP_NANDB_PW &&
                 <form>
                     <p>Password</p>
