@@ -120,6 +120,11 @@ form {
     html, body {
         font-size: 12px;
     }
+
+    form {
+        width: 100%;
+        padding: 0 4rem;
+    }
     /*
     $mobile-scale: 0.75;
 
