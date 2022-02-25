@@ -3,36 +3,63 @@
 
 #site-header {
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     color: #A96D4F;
+    width: 100%;
+    padding: 0 6vw;
     margin-bottom: 1rem;
     margin-top: 1.5rem;
 
-    p {
-        &:nth-of-type(1) {
-            margin-top: 1rem;
-            font-size: 3rem;
-            margin-bottom: 0;
-            font-family: 'Weiss', script;
-            letter-spacing: auto;
+    .header-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        font-family: 'Weiss', script;
+        font-weight: light;
+        letter-spacing: 0.2rem;
+        width: 25vw;
+        margin-top: 1rem;
 
-            span {
-                font-family: 'Paris', script;
+        a {
+            transition: 0.16s;
+
+            &:hover {
+                transform: translateY(-0.25rem);
+                border-bottom: 1px solid #A96D4F;
             }
-        }
-
-        &:nth-of-type(2) {
-            margin-top: -1rem;
-            font-size: 1rem;
-            letter-spacing: 0.375rem;
-            font-weight: 300;
-            font-family: 'Helvetica Neue', sans-serif;
         }
     }
 
-    &:hover {
-        cursor: pointer;
+    #header-logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        a {
+            &:nth-of-type(1) {
+                margin-top: 1rem;
+                font-size: 3rem;
+                margin-bottom: 0;
+                font-family: 'Weiss', script;
+                letter-spacing: auto;
+
+                span {
+                    font-family: 'Paris', script;
+                }
+            }
+
+            &:nth-of-type(2) {
+                margin-top: -1rem;
+                margin-bottom: 1rem;
+                font-size: 1rem;
+                letter-spacing: 0.375rem;
+                font-weight: 300;
+                font-family: 'Helvetica Neue', sans-serif;
+            }
+        }
     }
 }
