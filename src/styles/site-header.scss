@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     color: #A96D4F;
     width: 100%;
     padding: 0 6vw;
@@ -38,6 +38,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        margin: 0 3vw;
 
         a {
             &:nth-of-type(1) {
@@ -62,4 +63,18 @@
             }
         }
     }
+}
+
+@media only screen and (max-width: 1000px) {
+    #site-header {
+        .header-links {
+            display:none;
+        }
+
+        #header-logo {
+            width: 100%;
+        }
+    }
+
+
 }

@@ -1,10 +1,12 @@
 import React from "react";
 import  { Link } from 'react-router-dom';
+import Hamburger from './Hamburger'
 import '../styles/site-header.scss';
 
 const Header: React.FC = () => {
     return (
         <div id="site-header">
+            <Hamburger/>
             <div className="header-links">
                 <Link to="/">RSVP</Link>
                 <Link to="/">DETAILS</Link>
