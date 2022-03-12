@@ -19,7 +19,7 @@ const AllInvitees: React.FC = () => {
             }).then((response) => {
                 return response.json();
             }).then((responseJson) => {
-                const sortedResponseJson = responseJson.sort((a: any, b: any) => a.lastName.localeCompare(b.lastName));
+                const sortedResponseJson = responseJson.sort((a: any, b: any) => a.firstName.localeCompare(b.firstName));
                 setAllInvitees(sortedResponseJson);
             })
         }
@@ -40,9 +40,10 @@ const AllInvitees: React.FC = () => {
                 </form>
             }
             {   enteredPassword === process.env.REACT_APP_NANDB_PW &&
-                allInvitees.map((response: any) => (
+                allInvitees.map((response: any, index: number) => (
                     <div className="response" key={response.entityId}>
-                        <p className="responseName">{capitalizeFirstLetter(response.firstName.trim())} {capitalizeFirstLetter(response.lastName.trim())} { response.hasPlusOne ? ` and ${response.plusOneFirstName.trim()} ${response.plusOneLastName.trim()}` : ``}</p>
+                        <p className="responseName">{response.entityId}</p>
+                        <p className="responseName">{index+2}. {capitalizeFirstLetter(response.firstName.trim())} {capitalizeFirstLetter(response.lastName.trim())} { response.hasPlusOne ? ` and ${response.plusOneFirstName.trim()} ${response.plusOneLastName.trim()}` : ``}</p>
                         <p className="responseAddrDigital">{response.emailAddress} / {response.phoneNumber}</p>
                         <p className="responseAddrPhysical">{`${response.address1.trim()}${response.address2.trim() !== "" ? " " + response.address2.trim() : ''}`}<br/>{response.city.trim()}, {response.state.trim()} {response.zipCode.trim()}</p>
                     </div>
