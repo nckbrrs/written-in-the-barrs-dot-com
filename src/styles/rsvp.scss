@@ -1,0 +1,16 @@
+#rsvp {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    animation: fadeIn 1.6s;
+
+    h1 {
+        font-family: 'Weiss', script;
+        font-weight: 100;
+        font-size: 4rem;
+        margin-top: 50%;
+        color: #A96D4F;
+    }
+}

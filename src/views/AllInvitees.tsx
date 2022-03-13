@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { capitalizeFirstLetter } from '../assets/utils';
 import SiteHeader from '../components/SiteHeader';
 import ContentHeader from '../components/ContentHeader';
+import SiteFooter from '../components/SiteFooter';
 import '../styles/allInvitees.scss';
 
 const AllInvitees: React.FC = () => {
@@ -49,6 +50,7 @@ const AllInvitees: React.FC = () => {
                     </div>
                 ))
             }
+            <SiteFooter/>
         </div>
     )
 }

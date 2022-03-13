@@ -1,27 +1,12 @@
-@font-face { font-family: 'Weiss'; src: url('../assets/fonts/weiss.otf'); }
-@font-face { font-family: 'Paris'; src: url('../assets/fonts/paris.otf'); }
-
 #site-footer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     color: #A96D4F;
-    width: 100vw;
     padding: 0 6vw;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     margin-top: 1.5rem;
-
-    .we-do {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        text-align: center;
-        font-family: 'Weiss', script;
-        font-weight: light;
-        letter-spacing: 0.2rem;
-        margin-top: 1rem;
-    }
 
     #footer-logo {
         display: flex;
@@ -30,7 +15,7 @@
         align-items: center;
 
         img {
-            width: 100px;
+            width: 12rem;
         }
     }
 }

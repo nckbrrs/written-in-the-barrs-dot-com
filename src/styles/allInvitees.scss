@@ -1,15 +1,12 @@
-@font-face { font-family: 'Weiss'; src: url('../assets/fonts/weiss.otf'); }
-
 #allInvitees {
-    min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
     animation: fadeIn 1.6s;
     margin-bottom: 2rem;
-    padding: 0 4rem;
+    // padding: 0 4rem;
 
     .response {
         font-family: 'Weiss', script;
@@ -25,16 +22,6 @@
         p {
             color: #A96D4F;
             font-weight: bold;
-        }
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    #allInvitees {
-        padding: 0 4rem;
-
-        .response {
-            width: 100%;
         }
     }
 }

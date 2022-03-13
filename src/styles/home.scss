@@ -1,0 +1,115 @@
+#home {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    animation: fadeIn 1.6s;
+    margin-bottom: 2rem;
+    transition: 1s;
+
+    #hero-container {
+        margin: 1rem 0 2rem 0;
+        width: calc(28rem * 2);
+        height: 28rem;
+        background-color: #ffffff;
+        border-radius: 2rem;
+        background: url('../assets/images/hero.jpeg');
+        background-position: center -7rem;
+        background-size: cover;
+        position: relative;
+        transition: 0.5s;
+
+        #blobWithBranch {
+            position: absolute;
+            width: 20rem;
+            right: 1rem;
+            bottom: -4rem;
+        }
+
+        #blobText {
+            position: absolute;
+            font-family: 'Weiss', script;
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: light;
+            color: #A96D4F;
+            right: 8rem;
+            bottom: -2.5rem;
+        }
+
+        &:hover {
+            cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.svg), auto;
+        }
+    }
+
+    #subContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Weiss', script;
+        font-size: 1.75rem;
+        color: #A96D4F;
+        text-align: center;
+        text-transform: uppercase;
+
+        #line {
+            width: 1px;
+            height: 2.25rem;
+            background-color: #A96D4F;
+        }
+
+        button {
+            display: none; // kinda like this page without this button
+            border: none;
+            border-radius: 0.5rem;
+            background: #7DBCD8;
+            transition: 0.3s;
+            padding: 1rem;
+
+            &:hover {
+                background: #4988A3;
+                cursor: pointer;
+            }
+
+            span {
+                letter-spacing: 0.25rem;
+                font-family: 'Helvetica Neue', script;
+                text-transform: uppercase;
+                text-align: right;
+                color: white;
+                margin-right: -0.25rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #home {
+        #hero-container {
+            margin: 1rem 0 2rem 0;
+            width: 30rem;
+            height: 30rem;
+            background-position: center -6.56rem;
+            background-size: 190%;
+
+            #blobWithBranch {
+                position: absolute;
+                width: 18rem;
+                right: 4rem;
+                bottom: -5.5rem;
+            }
+
+            #blobText {
+                font-size: 1.75rem;
+                right: 9.875rem;
+                bottom: -4.5rem;
+            }
+        }
+
+        #subContent {
+            margin-top: 4rem;
+        }
+    }
+}
