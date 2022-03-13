@@ -19,6 +19,7 @@
         background-size: cover;
         position: relative;
         transition: 0.5s;
+        box-shadow: 0 0 0 0.2rem #A96D4F;
 
         #blobWithBranch {
             position: absolute;
@@ -36,10 +37,6 @@
             color: #A96D4F;
             right: 8rem;
             bottom: -2.5rem;
-        }
-
-        &:hover {
-            cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.svg), auto;
         }
     }
 
@@ -89,22 +86,22 @@
     #home {
         #hero-container {
             margin: 1rem 0 2rem 0;
-            width: 30rem;
-            height: 40rem;
-            background-position: center -8.5rem;
-            background-size: 250%;
+            width: 26rem;
+            height: calc(26rem * 4/3);
+            background-position: center -5.75rem;
+            background-size: 235%;
 
             #blobWithBranch {
                 position: absolute;
                 width: 18rem;
-                right: 4rem;
+                right: 2rem;
                 bottom: -5.5rem;
             }
 
             #blobText {
-                font-size: 1.75rem;
-                right: 9.75rem;
-                bottom: -4.5rem;
+                font-size: 1.5rem;
+                right: 8.25rem;
+                bottom: -4rem;
             }
         }
 
