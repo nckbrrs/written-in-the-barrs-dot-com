@@ -13,9 +13,9 @@
         width: calc(30rem * 2);
         height: 30rem;
         background-color: #ffffff;
-        border-radius: 2rem;
+        border-radius: 5rem;
         background: url('../assets/images/hero.jpeg');
-        background-position: center -7rem;
+        background-position: center -6.8rem;
         background-size: cover;
         position: relative;
         transition: 0.5s;
@@ -86,9 +86,10 @@
         #hero-container {
             margin: 1rem 0 2rem 0;
             width: 26rem;
+            border-radius: 3rem;
             height: calc(26rem * 4/3);
-            background-position: center -5.75rem;
-            background-size: 235%;
+            background-position: center -7.7rem;
+            background-size: 245%;
 
             #blobWithBranch {
                 position: absolute;
