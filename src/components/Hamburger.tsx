@@ -44,7 +44,7 @@ const Hamburger:React.FC = () => {
         </div>
         <div id="hamburger-links">
             <Link to="/">HOME</Link>
-            <Link to="/rsvp">RSVP</Link>
+            {/*<Link to="/rsvp">RSVP</Link>*/}
             {/*<Link to="/">DETAILS</Link>*/}
             {/*<Link to="/">REGISTRY</Link>*/}
             {/*<Link to="/">STORY</Link>*/}

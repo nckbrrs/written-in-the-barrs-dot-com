@@ -3,33 +3,34 @@ import React, { useState, useEffect } from 'react';
 const RSVPForm: React.FC = () => {
     const [inputtedFirstName, setInputtedFirstName] = useState<string>('');
     const [inputtedLastName, setInputtedLastName] = useState<string>('');
-    const [selectedInvitee, setSelectedInvitee] = useState<any>(null);
+    const [invitee, setInvitee] = useState<any>(null);
     const [hits, setHits] = useState<any[]>([]);
     const [hasClickedReview, setHasClickedReview] = useState<boolean>(false);
     const [submissionResponse, setSubmissionResponse] = useState<Response | null>(null);
     
     useEffect(() => {
-        setSelectedInvitee(null);
+        setInvitee(null);
+        console.dir(invitee);
     }, [])
     
     const handleAcceptOrDeclineSelection = (who: string, day: string, selection: string) => {
         if (who === 'invitee') {
             if (day === 'weddingDay') {
-                setSelectedInvitee({...selectedInvitee, isAttendingWedding: selection === 'accept'})
+                setInvitee({...invitee, isAttendingWedding: selection === 'accept'})
             } else {
-                setSelectedInvitee({...selectedInvitee, isAttendingRehearsalDinner: selection === 'accept'})
+                setInvitee({...invitee, isAttendingRehearsalDinner: selection === 'accept'})
             }
         } else {
             if (day === 'weddingDay') {
-                setSelectedInvitee({...selectedInvitee, isBringingPlusOneToWedding: selection === 'accept'})
+                setInvitee({...invitee, isBringingPlusOneToWedding: selection === 'accept'})
             } else {
-                setSelectedInvitee({...selectedInvitee, isBringingPlusOneToRehearsalDinner: selection === 'accept'})
+                setInvitee({...invitee, isBringingPlusOneToRehearsalDinner: selection === 'accept'})
             }
         }
     }
     
     const handleDietaryRestrictionsInput = (input: string) => {
-        setSelectedInvitee({...selectedInvitee, dietaryRestrictions: input});
+        setInvitee({...invitee, dietaryRestrictions: input});
     }
     
     const handleSearch = async (event: any) => {
@@ -41,7 +42,7 @@ const RSVPForm: React.FC = () => {
         }
 
         const params = new URLSearchParams({ "first": inputtedFirstName.toString().toLowerCase().trim(), "last": inputtedLastName.toString().toLowerCase().trim() });
-        const res = await fetch('http://localhost:5000/invitees?' + params);
+        const res = await fetch('https://written-in-the-barrs-backend.herokuapp.com/invitees?' + params);
         const result = await res.json();
         console.dir(result);
         setHits(result ?? []);
@@ -53,19 +54,26 @@ const RSVPForm: React.FC = () => {
     }
     
     const handleSubmit = async (event: any) => {
-        console.log('uhh clicked submit');
         event.preventDefault();
         
-        const putBody = { ...selectedInvitee, hasRsvpd: true };
-        console.dir(putBody);
+        const patchBody = { ...invitee, 
+            isAttendingWedding: invitee.isAttendingWedding,
+            isAttendingRehearsalDinner: invitee.isAttendingRehearsalDinner,
+            isBringingPlusOneToWedding: invitee.isBringingPlusOneToWedding,
+            isBringingPlusOneToRehearsalDinner: invitee.isBringingPlusOneToRehearsalDinner,
+            dietaryRestrictions: invitee.dietaryRestrictions,
+            hasRsvpd: true,
+        };
+        
+        console.dir(patchBody);
 
-        const response: Response = await fetch('http://localhost:5000/invitees', {
-            body: JSON.stringify(putBody),
+        const response: Response = await fetch('https://written-in-the-barrs-backend.herokuapp.com/invitees', {
+            body: JSON.stringify(patchBody),
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
-            method: 'PUT',
+            method: 'PATCH',
         });
 
         console.dir(response.json());
@@ -75,22 +83,164 @@ const RSVPForm: React.FC = () => {
     useEffect(() => {
         if (submissionResponse !== null) {
             const reviewElement = document.getElementById('rsvpForm-review');
-            const thanksTextElement = document.getElementById('thanks-text');
+            const submissionConfirmationElement = document.getElementById('submission-confirmation');
 
-            if (reviewElement !== null && thanksTextElement !== null) {
+            if (reviewElement !== null && submissionConfirmationElement !== null) {
                 reviewElement.style.opacity = '0';
-                thanksTextElement.style.display = 'flex';
+                submissionConfirmationElement.style.display = 'flex';
 
                 setTimeout(() => {
                     reviewElement.style.display = 'none'
-                    thanksTextElement.style.opacity = '1';
+                    submissionConfirmationElement.style.opacity = '1';
                 }, 1000)
             }
         }
     }, [submissionResponse])
+    
+    const makeSelections = () => {
+        return (
+            <form id="rsvpForm-selections" onSubmit={goToReview}>
+                <div className="rsvpform-section">
+                    <p className="rsvpform-section-header">
+                        {"Wedding Day"}
+                    </p>
+                    <p className="rsvpform-section-subheader">
+                        {"Friday, June 24, 2022"}
+                    </p>
+                    <div className="rsvpform-section-content">
+                        <p>{`${invitee.firstName} ${invitee.lastName}`}</p>
+                        <div className="rsvpform-section-content-buttons">
+                            <button type="button" className={invitee.isAttendingWedding ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'weddingDay', 'accept')}>accept</button>
+                            <button type="button" className={invitee.isAttendingWedding ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'weddingDay', 'decline')}>decline</button>
+                        </div>
+                        {   invitee.hasPlusOne && <>
+                            <p>{`${invitee.plusOneFirstName} ${invitee.plusOneLastName}`}</p>
+                            <div className="rsvpform-section-content-buttons">
+                                <button type="button" className={invitee.isBringingPlusOneToWedding ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'weddingDay', 'accept')}>accept</button>
+                                <button type="button" className={invitee.isBringingPlusOneToWedding ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'weddingDay', 'decline')}>decline</button>
+                            </div></>
+                        }
+                    </div>
+                </div>
+                
+                {   invitee.isInvitedToRehearsalDinner &&
+                    <div className="rsvpform-section">
+                        <p className="rsvpform-section-header">
+                            {"Rehearsal Dinner"}
+                        </p>
+                        <p className="rsvpform-section-subheader">
+                            {"Thursday, June 23, 2022"}
+                        </p>
+                        <div className="rsvpform-section-content">
+                            <p>{`${invitee.firstName} ${invitee.lastName}`}</p>
+                            <div className="rsvpform-section-content-buttons">
+                                <button type="button" className={invitee.isAttendingRehearsalDinner ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'rehearsalDinner', 'accept')}>accept</button>
+                                <button type="button" className={invitee.isAttendingRehearsalDinner ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'rehearsalDinner', 'decline')}>decline</button>
+                            </div>
+                            {   invitee.hasPlusOne && <>
+                                <p>{`${invitee.plusOneFirstName} ${invitee.plusOneLastName}`}</p>
+                                <div className="rsvpform-section-content-buttons">
+                                    <button type="button" className={invitee.isBringingPlusOneToRehearsalDinner ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'rehearsalDinner', 'accept')}>accept</button>
+                                    <button type="button" className={invitee.isBringingPlusOneToRehearsalDinner ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'rehearsalDinner   ', 'decline')}>decline</button>
+                                </div></>
+                            }
+                        </div>
+                    </div>
+                }
+                
+                <div className="rsvpform-section">
+                    <p className="rsvpform-section-header">
+                        {"Dietary Restrictions"}
+                    </p>
+                    <p className="rsvpform-section-subheader">
+                        {"(if any)"}
+                    </p>
+                    <div className="rsvpform-section-content">
+                        <input name="dietaryRestrictions" placeholder="We got you covered!" type="text" value={invitee.dietaryRestrictions} onChange={(e) => handleDietaryRestrictionsInput(e.target.value)}/>
+                    </div>
+                </div>
+                <button id="submitBtn" type="submit">Review</button>
+            </form>
+        )
+    }
+    
+    const reviewSelections = () => {
+        return (
+            <form id="rsvpForm-review" onSubmit={handleSubmit}>
+                <div className="rsvpform-section">
+                    <p className="rsvpform-section-header">
+                        {"Wedding Day"}
+                    </p>
+                    <p className="rsvpform-section-subheader">
+                        {"Friday, June 24, 2022"}
+                    </p>
+                    <div className="rsvpform-section-content">
+                        <p><b>{`${invitee.firstName} ${invitee.isAttendingWedding ? ' will': ' will not'} attend`}</b></p>
+                        {   invitee.hasPlusOne && 
+                                <p><b>{`${invitee.plusOneFirstName} ${invitee.isBringingPlusOneToWedding ? ' will': ' will not'} attend`}</b></p>
+                        }
+                    </div>
+                </div>
+                
+                {   invitee.isInvitedToRehearsalDinner ? 
+                    <div className="rsvpform-section">
+                        <p className="rsvpform-section-header">
+                            {`Rehearsal Dinner`}
+                        </p>
+                        <p className="rsvpform-section-subheader">
+                            {"Thursday, June 23, 2022"}
+                        </p>
+                        <div className="rsvpform-section-content">
+                            <p><b>{`${invitee.firstName} ${invitee.isAttendingRehearsalDinner ? ' will': ' will not'} attend`}</b></p>
+                            {   invitee.hasPlusOne && 
+                                <p><b>{`${invitee.plusOneFirstName} ${invitee.isBringingPlusOneToRehearsalDinner ? ' will': ' will not'} attend`}</b></p>
+                            }
+                        </div>
+                    </div> : null
+                }
+                
+                {   invitee.dietaryRestrictions.trim() !== "" ?
+                    <div className="rsvpform-section">
+                        <p className="rsvpform-section-header">
+                            {"Dietary Restrictions"}
+                        </p>
+                        <p className="rsvpform-section-subheader">
+                            {"(if any)"}
+                        </p>
+                        <div className="rsvpform-section-content">
+                            <p><b>{invitee.dietaryRestrictions}</b></p>
+                        </div>
+                    </div> : null
+                }
+                <button type="submit">Submit</button>
+            </form>
+        )
+    }
+    
+    const submissionConfirmation = () => {
+        let success: boolean = submissionResponse?.status === 200;
+        let successSubtitle: string = "We've received your RSVP and ";
+        let failureSubtitle: string = "Something went wrong. Please contact Nick or Brooke directly.";
+        
+        if (invitee.isAttendingWedding || invitee.isAttendingRehearsalDinner || invitee.isBringingPlusOneToWedding || invitee.isBringingPlusOneToRehearsalDinner) {
+            successSubtitle += "look forward to partying with you.";
+        } else {
+            successSubtitle += "you will be greatly missed.";
+        }
+        
+        let title: string = success ? "Thank you!" : "Oh no!";
+        let subtitle = success ? successSubtitle : failureSubtitle;
+        
+        return (
+            <div id="submission-confirmation">
+                <p className="submission-confirmation-title">{title}</p>
+                <p className="submission-confirmation-subtitle">{subtitle}</p>
+            </div>
+        )
+    }
 
     return <>
-        {   selectedInvitee === null &&
+        {   invitee === null &&
             <form id="rsvpForm-search" onSubmit={handleSearch}>
                 <p>Name</p>
                 <div className="formRow">
@@ -99,118 +249,26 @@ const RSVPForm: React.FC = () => {
                 </div>
                 <button type="submit">Search</button>
                 {hits.map((hit) => (
-                    <div className="search-result" key={hit.entityId}>
-                        <a onClick={() => setSelectedInvitee(hit)}>
-                            RSVP for
-                            <br/>
-                            <strong>{hit.firstName} {hit.lastName}
-                            {hit.hasPlusOne && <br/>}
-                            {hit.hasPlusOne && ` and ${hit.plusOneFirstName} ${hit.plusOneLastName}`}</strong>
-                        </a>
+                    <div className="search-result" key={hit.entityId} onClick={() => setInvitee(hit)}>
+                        RSVP for
+                        <br/>
+                        <strong>{hit.firstName} {hit.lastName}
+                        {hit.hasPlusOne && <br/>}
+                        {hit.hasPlusOne && ` and ${hit.plusOneFirstName} ${hit.plusOneLastName}`}</strong>
                     </div>
                 ))}
             </form>
         }
         
-        {   selectedInvitee !== null && !hasClickedReview && 
-            <form id="rsvpForm-weddingDay" onSubmit={goToReview}>
-                <h1>Wedding Day</h1>
-                <h4>Friday, June 24, 2022</h4>
-                <br/>
-                <h2>{selectedInvitee.firstName} {selectedInvitee.lastName}</h2>
-                <div className="accept-decline-button-row">
-                    <button type="button" className={selectedInvitee.isAttendingWedding ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'weddingDay', 'accept')}>accept</button>
-                    <button type="button" className={selectedInvitee.isAttendingWedding ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'weddingDay', 'decline')}>decline</button>
-                </div>
-                
-                {   selectedInvitee.hasPlusOne && 
-                    <>
-                    <h2>{selectedInvitee.plusOneFirstName} {selectedInvitee.plusOneLastName}</h2>
-                    <div className="accept-decline-button-row">
-                        <button type="button" className={selectedInvitee.isBringingPlusOneToWedding ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'weddingDay', 'accept')}>accept</button>
-                        <button type="button" className={selectedInvitee.isBringingPlusOneToWedding ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'weddingDay', 'decline')}>decline</button>
-                    </div>
-                    </>
-                }
-                
-                {   selectedInvitee.isInvitedToRehearsalDinner &&
-                    <>
-                    <h1>Rehearsal Dinner</h1>
-                    <h4>Thursday, June 23, 2022</h4>
-                    <br/>
-                    <h2>{selectedInvitee.firstName} {selectedInvitee.lastName}</h2>
-                    <div className="accept-decline-button-row">
-                        <button type="button" className={selectedInvitee.isAttendingRehearsalDinner ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'rehearsalDinner', 'accept')}>accept</button>
-                        <button type="button" className={selectedInvitee.isAttendingRehearsalDinner ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('invitee', 'rehearsalDinner', 'decline')}>decline</button>
-                    </div>
-                    
-                    {   selectedInvitee.hasPlusOne && 
-                        <>
-                        <h2>{selectedInvitee.plusOneFirstName} {selectedInvitee.plusOneLastName}</h2>
-                        <div className="accept-decline-button-row">
-                            <button type="button" className={selectedInvitee.isBringingPlusOneToRehearsalDinner ? "selected" : "" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'rehearsalDinner', 'accept')}>accept</button>
-                            <button type="button" className={selectedInvitee.isBringingPlusOneToRehearsalDinner ? "" : "selected" } onClick={() => handleAcceptOrDeclineSelection('plusOne', 'rehearsalDinner', 'decline')}>decline</button>
-                        </div>
-                        </>
-                    }
-                    </>
-                }
-                
-                <h1>Dietary Restrictions</h1>
-                <h4>(if any)</h4>
-                <br/>
-                <input name="dietaryRestrictions" placeholder="We got you covered!" type="text" value={selectedInvitee.dietaryRestrictions} onChange={(e) => handleDietaryRestrictionsInput(e.target.value)}/>
-                <button type="submit">Review</button>
-            </form>
-        }
         
-        {   hasClickedReview && 
-            <form id="rsvpForm-review" onSubmit={handleSubmit}>
-                <h1>Wedding Day</h1>
-                <h4>Friday, June 24, 2022</h4>
-                <br/>
-                <h3>{selectedInvitee.firstName} {selectedInvitee.lastName} <b><u>{selectedInvitee.isAttendingWedding ? ' will attend' : ' will not attend' }</u></b></h3>
-                {   selectedInvitee.hasPlusOne && 
-                    <h3>{selectedInvitee.plusOneFirstName} {selectedInvitee.plusOneLastName} <b><u>{selectedInvitee.isBringingPlusOneToWedding ? ' will attend' : ' will not attend' }</u></b></h3>                
-                }
-                {   selectedInvitee.isInvitedToRehearsalDinner && 
-                    <>
-                        <h1>Rehearsal Dinner</h1>
-                        <h4>Thursday, June 23, 2022</h4>
-                        <br/>
-                        <h3>{selectedInvitee.firstName} {selectedInvitee.lastName} <b><u>{selectedInvitee.isAttendingRehearsalDinner ? ' will attend' : ' will not attend' }</u></b></h3>
-                        {   selectedInvitee.hasPlusOne && 
-                            <h3>{selectedInvitee.plusOneFirstName} {selectedInvitee.plusOneLastName} <b><u>{selectedInvitee.isBringingPlusOneToRehearsalDinner ? ' will attend' : ' will not attend' }</u></b></h3>                
-                        }
-                    </>
-                }
-                {   selectedInvitee.dietaryRestrictions.trim() !== "" && 
-                    <>
-                    <h1>Dietary Restrictions</h1>
-                    <br/>
-                    <h3>{selectedInvitee.dietaryRestrictions}</h3>
-                    </>
-                }
-                <button type="submit">Submit</button>
-            </form>
-        }
+        {/* Make selections */}
+        {!hasClickedReview && invitee !== null && makeSelections()}
         
-        <div id="thanks-text">
-            {   submissionResponse !== null && submissionResponse.status === 200 || false
-                ?
-                <>
-                <h3>Thank you!</h3>
-                <br/>
-                <h5>Whether or not you're able to make it,<br/>we love you and thank you<br/>for being a part of our lives.</h5>
-                </>
-                :
-                <>
-                <h3>Oh no!</h3>
-                <br/>
-                <h5>Something went wrong<br/>with your submission.<br/><br/>Please contact Nick or Brooke directly.</h5>
-                </>
-            }
-        </div>
+        {/* Review selections */}
+        {hasClickedReview && reviewSelections()}
+        
+        {/* Submitted */}
+        {submissionResponse !== null && submissionConfirmation()}
     </>
 }
 

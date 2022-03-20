@@ -15,9 +15,10 @@ const App:React.FC = () => {
 					<Route exact path="/" render={() => (
 						<Home/>
 					)}/>
+					{/*
 					<Route exact path="/rsvp" render={() => (
 						<RSVP/>
-					)}/>
+					)}/>*/}
 					<Route exact path="/invitee" render={() => (
 						<AddInvitee hasPlusOne={false}/>
 					)}/>
@@ -28,7 +29,7 @@ const App:React.FC = () => {
 						<AllInvitees/>
 					)}/>
 					<Route path="*" render={() => (
-						<Redirect to="/invitee"/>
+						<Redirect to="/"/>
 					)}/>
 				</Switch>
 			</BrowserRouter>

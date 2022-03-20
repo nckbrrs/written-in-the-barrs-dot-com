@@ -1,101 +1,114 @@
 #rsvp {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     animation: fadeIn 1.6s;
     
     form {
-        height: 100%;
+        flex: auto;
         
-        h1 {
-            font-family: 'Weiss', script;
-            text-align: center;
-            font-weight: 100;
-            color: #A96D4F;
-            margin-bottom: 0;
-            margin-top: 0;
-            
-            &:not(:nth-of-type(1)) {
-                padding-top: 3rem;
+        .rsvpform-section {
+            .rsvpform-section-header {
+                font-size: 2rem;
+                font-family: 'Weiss', script;
+                text-align: center;
+                font-weight: 100;
+                color: #A96D4F;
+                margin-bottom: 0;
+                margin-top: 0;
+                white-space: nowrap;
             }
-        }
-        
-        h2 {
-            font-family: 'Helvetica Neue', sans-serif;
-            font-weight: 300;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.25rem;
-            text-align: center;
-            color: #A96D4F;
-        }
-        
-        h3 {
-            font-family: 'Weiss', script;
-            text-align: center;
-            font-weight: 100;
-            color: #A96D4F;
-            margin-bottom: 0;
-            margin-top: 0;
-        }
-        
-        h4 {
-            font-family: 'Weiss', script;
-            color: #C2986E;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-        
-        .accept-decline-button-row {
-            display: flex;
-            justify-content: space-between;
             
-            button {
-                width: 47.5%;
-                background-color: #e9e9e9;
-                box-shadow: 0 0 0 2px #C2986E;
+            .rsvpform-section-subheader {
+                font-family: 'Weiss', script;
                 color: #C2986E;
-                margin-top: .333rem;
+                text-align: center;
+                letter-spacing: 0.25rem;
+                margin-top: 0;
+                margin-bottom: 0;
+                white-space: nowrap;
+            }
+            
+            .rsvpform-section-content {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                display: flex;
+                flex-direction: column;
                 
-                &:hover, &.selected {
-                    background-color: #C2986E;
-                    color: #ffffff;
+                p {
+                    font-family: 'Helvetica Neue', sans-serif;
+                    font-weight: 300;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.25rem;
+                    text-align: center;
+                    color: #A96D4F;
+                    white-space: nowrap;
+                    
+                    &:nth-of-type(even) {
+                        margin-top: 0;
+                    }
+                }
+                
+                .rsvpform-section-content-buttons {
+                    display: flex;
+                    justify-content: space-between;
+                    
+                    button {
+                        width: 47.5%;
+                        background-color: #e9e9e9;
+                        box-shadow: 0 0 0 2px #C2986E;
+                        color: #C2986E;
+                        margin-top: .333rem;
+                        
+                        &:hover, &.selected {
+                            background-color: #C2986E;
+                            color: #ffffff;
+                        }
+                    }
+                }
+                
+                input {
+                    text-align: center;
+                    padding-left: 0.75rem;
+                    margin: .333rem;
+                    border-radius: 0.333rem;
+                    height: 2rem;
+                    border: none;
+                    background: #ffffff;
+                    outline: none;
+                    font-family: 'Helvetica Neue', sans-serif;
+                    transition: 0.3s;
+                    color: #333333;
+
+                    &:hover {
+                        box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.333);
+                    }
+
+                    &:focus {
+                        box-shadow: 0 0 0 0.15rem #C2986E;
+
+                        &::placeholder {
+                            color: black;
+                        }
+                    }
                 }
             }
-        }
-        
-        input {
-            // width: 100%;
-            padding-left: 0.75rem;
-            margin: .333rem;
-            border-radius: 0.333rem;
-            height: 2rem;
-            border: none;
-            background: #ffffff;
-            outline: none;
-            font-family: 'Helvetica Neue', sans-serif;
-            transition: 0.3s;
-            color: #333333;
-
-            &:hover {
-                box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.333);
-            }
-
-            &:focus {
-                box-shadow: 0 0 0 0.15rem #C2986E;
-
-                &::placeholder {
-                    color: black;
+            
+            &:last-of-type {
+                .rsvpform-section-content {
+                    margin-bottom: 0;
                 }
             }
         }
     }
     
     #rsvpForm-search {
+        display: flex;
+        flex-direction: column;
         .search-result {
             font-family: 'Weiss', script;
             font-size: 1.5rem;
@@ -108,37 +121,56 @@
             animation: fadeIn 1s;
             transition: 0.3s;
 
-            a {
-                text-decoration: none;
-
-                &:visited {
-                    color: white;
-                }
-            }
-
-
             &:hover {
                 background: #A96D4F;
                 cursor: pointer;
             }
         }
+        
+        button {
+            background-color: #C2986E;
+            
+            &:hover {
+                background-color: #A96D4F;
+            }
+        }
     }
     
-    #thanks-text {
-        display: none;
-        flex-direction: column;
-        font-size: 3rem;
-        font-family: 'Weiss', script;
-        text-align: center;
-        color: #A96D4F;
-        opacity: 0;
-        transition: 1s;
-        padding: 0 3rem;
-        
-        span {
-            display: block;
-            font-size: 2rem;
+    #rsvpForm-selections {
+        #submitBtn {
+            background-color: #C2986E;
             
+            &:hover {
+                background-color: #A96D4F;
+            }
+        }
+    }
+    
+    #submission-confirmation {
+        display: none;
+        height: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 30rem;
+        transition: 1s;
+        opacity: 0;
+        flex: auto;
+        
+        .submission-confirmation-title {
+            font-size: 3rem;
+            font-family: 'Weiss', script;
+            text-align: center;
+            color: #A96D4F;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        .submission-confirmation-subtitle {
+            font-size: 2rem;
+            font-family: 'Weiss', script;
+            text-align: center;
+            color: #A96D4F;
+            margin-block-end: 0;
         }
     }
 }
