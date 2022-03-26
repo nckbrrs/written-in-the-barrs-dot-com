@@ -8,7 +8,6 @@ const Home: React.FC = () => {
     return (
         <div id="home">
             <SiteHeader/>
-            {/*<ContentHeader title={'HOME'}/>*/}
             <div id="hero-container">
                 <img id="blobWithBranch" src={blobWithBranch}/>
                 <p id="blobText">JUNE&nbsp;24,&nbsp;2022<br/>CARY,&nbsp;NC</p>
@@ -20,7 +19,6 @@ const Home: React.FC = () => {
                     <button><span>RSVP</span></button>
                 </Link>
             </div>
-            {/*<SiteFooter/>*/}
         </div>
     )
 }

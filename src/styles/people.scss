@@ -1,0 +1,235 @@
+#people {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    animation: fadeIn 1.6s;
+    
+    .content-header {
+        #line {
+            background: #e9e9e9;
+        }
+    }
+    
+    #people-container {
+        display: flex;
+        justify-content: space-between;
+        width: 60rem;
+        position: relative;
+        
+        .entire-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .content-header {
+            p {
+                color: #A96D4F;
+                letter-spacing: 0.25rem;
+            }
+            
+            #line {
+                background: #A96D4F;
+            }
+            
+        }
+        
+        #line2 {
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: -3rem;
+            background-color: #A96D4F;
+        }
+        
+        #line3 {
+            width: 1px;
+            height: 2rem;
+            left: 50%;
+            background-color: #A96D4F;
+            display: none;
+        }
+    }
+    
+    .bridal-person {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 23rem;
+        margin-bottom: 3rem;
+        
+        &.label-right {
+            justify-content: flex-start;
+            
+            .bridal-person-label {
+                right: 0rem;
+                text-align: left;
+            }
+        }
+        
+        &.label-left {
+            justify-content: flex-end;
+            
+            .bridal-person-label {
+                left: 0rem;
+                text-align: right;
+            }
+        }
+        
+        .img-container {
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 1000rem;
+            
+            img {
+                width: 100%;
+                max-width: 11rem;
+                
+                &#kassidy {
+                    transform: scale(1.2) translateY(-0.5rem) translateX(-0.1rem);
+                }
+                
+                &#win {
+                    transform: scale(1.15);
+                    filter: brightness(1.15) saturate(.85);
+                }
+                
+                &#amberlyn {
+                    transform: scale(1.1);
+                }
+                
+                &#john {
+                    filter: brightness(1.15);
+                }
+                
+                &#zoë {
+                    transform: scale(1.1) translateY(0.1rem);
+                    filter: brightness(1.2);
+                }
+                
+                &#thomas {
+                    transform: scale(1.1);
+                }
+                
+                &#maddi {
+                    transform: scale(1) translateX(0.2rem);
+                }
+                
+                &#eric {
+                    transform: scale(1.4) translateY(0.75rem);
+                    filter: brightness(1.15);
+                }
+                
+                &#claire {
+                    transform: scale(1.1);
+                }
+                
+                &#sam {
+                    transform: scale(1.1) translateY(0.2rem);
+                }
+                
+                &#kevin {
+                    transform: scale(1.15) translateX(0.2rem);
+                }
+                
+                &#ryan {
+                    transform: scale(1.1);
+                }
+                
+                &#hannah {
+                    transform: scale(1.1);
+                }
+                
+                &#joe {
+                    transform: scale(1.2) translateX(0.2rem);
+                }
+                
+                &#holly {
+                    transform: translateY(-1rem);
+                }
+                
+                &#stephen {
+                    transform: scale(1.05) translateY(0.2rem) rotateZ(15deg);
+                }
+                
+                &#ashley {
+                    transform: scale(1.1) translateX(0.25rem)
+                }
+                
+                &#wes {
+                    transform: scale(1.05) translateX(0.5rem);
+                }
+            }
+        }
+        
+        .bridal-person-label {
+            z-index: 2;
+            width: 14rem;
+            position: absolute;
+            border-radius: 0.5rem;
+            background-color: white;
+            
+            p {
+                margin-block-end: 0;
+                margin-block-start: 0;
+                margin: 1rem 1.5rem;
+                font-size: 0.75rem;
+                letter-spacing: 0.2rem;
+                color: #A96D4F;
+                font-family: 'Helvetica Neue', sans-serif;
+                text-transform: uppercase;
+                
+                &:nth-of-type(1) {
+                    font-weight: bold;
+                    margin-bottom: 0.2rem;
+                }
+                
+                &:nth-of-type(2) {
+                    margin-top: 0.2rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #people {
+        
+        .content-header {
+            #line {
+                background: #A96D4F;
+            }
+        }
+        
+        #people-container {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            width: auto;
+            
+            .content-header {
+                p {
+                    margin-bottom: 1rem;
+                }
+            }
+            
+            #line {
+                display: none;
+            }
+            
+            #line2 {
+                display: none;
+            }
+            
+            #line3 {
+                display: flex;
+                margin-top: -0.5rem;
+                margin-bottom: 1.375rem;
+            }
+        }
+    }
+}

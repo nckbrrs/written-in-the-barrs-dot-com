@@ -43,12 +43,12 @@ const Hamburger:React.FC = () => {
             <div id="burger3" className={burgerClassNames()}/>
         </div>
         <div id="hamburger-links">
-            <Link to="/">HOME</Link>
-            {/*<Link to="/rsvp">RSVP</Link>*/}
-            {/*<Link to="/">DETAILS</Link>*/}
+            <Link to="/" onClick={() => toggleIsOpen()}>HOME</Link>
+            {<Link to="/rsvp">RSVP</Link>}
+            {<Link to="/details">DETAILS</Link>}
             {/*<Link to="/">REGISTRY</Link>*/}
-            {/*<Link to="/">STORY</Link>*/}
-            {/*<Link to="/">PEOPLE</Link>*/}
+            <Link to="/story" onClick={() => toggleIsOpen()}>STORY</Link>
+            <Link to="/people" onClick={() => toggleIsOpen()}>PEOPLE</Link>
             {/*<Link to="/">CITY</Link>*/}
         </div>
         </>

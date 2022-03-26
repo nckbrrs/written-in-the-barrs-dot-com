@@ -1,0 +1,97 @@
+#details {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    animation: fadeIn 1.6s;
+    margin-bottom: 2rem;
+    transition: 1s;
+
+    #hero-container {
+        max-width: 50rem;
+        position: relative;
+        transition: 0.5s;
+        margin: -2rem 3rem 1rem;
+        
+        img {
+            max-width: 100%;
+        }
+    }
+    
+    #details-actual {
+        color: #A96D4F;
+        text-align: center;
+        width: 36rem;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        
+        img {
+            width: 2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        #datetime {
+            margin-left: 4rem;
+        }
+        
+        #date, #venue {
+            font-size: 1.5rem;
+        }
+        
+        #time, #addr {
+            font-size: 1rem;
+            // margin-bottom: 2.25rem;
+        }
+    }
+    
+    #rsvp-link {
+        font-size: 0.75rem;
+        color: #ffffff;
+        transition: 0.16s;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: 6rem;
+        text-align: center;
+        letter-spacing: 0.25rem;
+        background-color: #C2986E;
+        padding: 0.75rem;
+        padding-left: 1.2rem;
+        border-radius: 2rem;
+
+        &:hover {
+            background-color: #A96D4F;
+            cursor: pointer;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #details {
+        #hero-container {
+            margin: -1.5rem 3rem 1.5rem;
+        }
+        
+        #details-actual {
+            flex-direction: column;
+            
+            #datetime {
+                margin-left: 0rem;
+            }
+            
+            #date, #venue {
+                letter-spacing: 0.15rem;
+            }
+            
+            #time, #addr {
+                margin-bottom: 2.25rem;
+            }
+        }
+    }
+}

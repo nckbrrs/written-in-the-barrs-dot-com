@@ -10,7 +10,10 @@ const RSVP: React.FC = () => {
         <div id="rsvp">
             <SiteHeader/>
             <ContentHeader title={"RSVP"}/>
+            { false &&
             <RSVPForm/>
+            }
+            <h1 id="temp">coming soon... :)</h1>
             <SiteFooter/>
         </div>
     )

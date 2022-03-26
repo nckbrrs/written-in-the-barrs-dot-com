@@ -8,8 +8,8 @@ const Header: React.FC = () => {
         <div id="site-header">
             <Hamburger/>
             <div className="header-links">
-                {/*<Link to="/"><span>RSVP</span></Link>*/}
-                {/*<Link to="/"><span>DETAILS</span></Link>*/}
+                {<Link to="/rsvp"><span>RSVP</span></Link>}
+                {<Link to="/details"><span>DETAILS</span></Link>}
                 {/*<Link to="/"><span>REGISTRY</span></Link>*/}
             </div>
             <div id="header-logo">
@@ -17,8 +17,8 @@ const Header: React.FC = () => {
                 <Link to="/">06.24.2022</Link>
             </div>
             <div className="header-links">
-                {/*<Link to="/"><span>STORY</span></Link>*/}
-                {/*<Link to="/"><span>PEOPLE</span></Link>*/}
+                {<Link to="/story"><span>STORY</span></Link>}
+                {<Link to="/people"><span>PEOPLE</span></Link>}
                 {/*<Link to="/"><span>CITY</span></Link>*/}
             </div>
         </div>

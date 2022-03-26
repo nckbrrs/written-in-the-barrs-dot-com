@@ -7,7 +7,7 @@ interface ContentHeaderProps {
 
 const ContentHeader: React.FC<ContentHeaderProps> = (props) => {
     return (
-        <div id="content-header">
+        <div className="content-header">
             <p>{props.title}</p>
             <div id="line"/>
         </div>
