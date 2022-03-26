@@ -42,12 +42,11 @@
         }
         
         #date, #venue {
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
         
         #time, #addr {
-            font-size: 1rem;
-            // margin-bottom: 2.25rem;
+            font-size: 1.25rem;
         }
     }
     
@@ -55,7 +54,7 @@
         font-size: 0.75rem;
         color: #ffffff;
         transition: 0.16s;
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-bottom: 2rem;
         width: 6rem;
         text-align: center;
@@ -90,8 +89,12 @@
             }
             
             #time, #addr {
-                margin-bottom: 2.25rem;
+                margin-bottom: 2rem;
             }
+        }
+        
+        #rsvp-link {
+            margin-top: 0;
         }
     }
 }
