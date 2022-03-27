@@ -1,18 +1,18 @@
 #details {
     width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
     animation: fadeIn 1.6s;
-    margin-bottom: 2rem;
     transition: 1s;
 
     #hero-container {
         max-width: 50rem;
         position: relative;
         transition: 0.5s;
-        margin: -2rem 3rem 1rem;
+        margin-top: -1.5rem;
         
         img {
             max-width: 100%;
@@ -22,10 +22,10 @@
     #details-actual {
         color: #A96D4F;
         text-align: center;
-        width: 36rem;
+        width: 40rem;
         display: flex;
         justify-content: space-between;
-        margin-bottom: 1rem;
+        margin: 1rem 0;
         
         img {
             width: 2rem;
@@ -54,8 +54,8 @@
         font-size: 0.75rem;
         color: #ffffff;
         transition: 0.16s;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
         width: 6rem;
         text-align: center;
         letter-spacing: 0.25rem;

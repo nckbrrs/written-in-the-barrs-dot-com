@@ -12,11 +12,12 @@
     #footer-logo {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
+        flex: auto;
 
         img {
-            width: 12rem;
+            width: 10rem;
         }
     }
 }
