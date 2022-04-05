@@ -7,6 +7,7 @@
     justify-content: flex-start;
     animation: fadeIn 1.6s;
     transition: 1s;
+    font-family: 'Weiss', script;
 
     #hero-container {
         max-width: 50rem;
@@ -43,6 +44,7 @@
         
         #date, #venue {
             font-size: 2rem;
+            font-weight: bold;
         }
         
         #time, #addr {
@@ -82,10 +84,6 @@
             
             #datetime {
                 margin-left: 0rem;
-            }
-            
-            #date, #venue {
-                letter-spacing: 0.15rem;
             }
             
             #time, #addr {

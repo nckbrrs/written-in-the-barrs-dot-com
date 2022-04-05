@@ -240,14 +240,16 @@ const RSVPForm: React.FC = () => {
     }
 
     return <>
-        {   invitee === null &&
+        {   invitee === null && 
             <form id="rsvpForm-search" onSubmit={handleSearch}>
+            {hits.length === 0 && <>
                 <p>Name</p>
                 <div className="formRow">
                     <input name="firstName" placeholder="First Name" type="text" value={inputtedFirstName} onChange={(e) => setInputtedFirstName(e.target.value)}/>
                     <input name="lastName" placeholder="Last Name" type="text" value={inputtedLastName} onChange={(e) => setInputtedLastName(e.target.value)}/>
                 </div>
                 <button type="submit">Search</button>
+            </>}
                 {hits.map((hit) => (
                     <div className="search-result" key={hit.entityId} onClick={() => setInvitee(hit)}>
                         RSVP for

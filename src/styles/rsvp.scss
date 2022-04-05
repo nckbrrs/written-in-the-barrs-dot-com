@@ -127,6 +127,10 @@
             background: #C2986E;
             animation: fadeIn 1s;
             transition: 0.3s;
+            
+            &:first-of-type {
+                margin-top: 0;
+            }
 
             &:hover {
                 background: #A96D4F;

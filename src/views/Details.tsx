@@ -1,6 +1,5 @@
 import React from 'react';
 import SiteHeader from '../components/SiteHeader';
-import SiteFooter from '../components/SiteFooter';
 import ContentHeader from '../components/ContentHeader';
 import  { Link } from 'react-router-dom';
 import map from '../assets/images/map.png';
