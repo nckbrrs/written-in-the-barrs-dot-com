@@ -20,6 +20,10 @@ import boxcar from '../assets/images/pois/boxcar.jpg';
 import moore from '../assets/images/pois/moore.jpg';
 import crabtree from '../assets/images/pois/crabtree.jpg';
 import ncma from '../assets/images/pois/ncma.jpg';
+import mayton from '../assets/images/pois/mayton.jpg';
+import springhill from '../assets/images/pois/springhill.jpg';
+import homewood from '../assets/images/pois/homewood.jpg';
+import hyatt from '../assets/images/pois/hyatt.jpg';
 
 const POIs = {
     'coffee': [
@@ -126,6 +130,32 @@ const POIs = {
             'location': "https://maps.apple.com/?address=2110%20Blue%20Ridge%20Rd,%20Raleigh,%20NC%20%2027607,%20United%20States&auid=999115317294492985&ll=35.810068,-78.702528&lsp=9902&q=North%20Carolina%20Museum%20of%20Art&_ext=CjIKBQgEEOIBCgQIBRADCgQIBhAQCgQIChAACgQIUhAMCgQIVRAMCgQIWRABCgUIpAEQARImKcv9af7z5kFAMfag+UBQrVPAOYSAIV9M6EFAQfelyGtvrFPAUAM%3D"
         },
     ],
+    'stay': [
+        {
+            'image': mayton,
+            'name': 'The Mayton\nInn',
+            'website': 'https://www.themayton.com',
+            'location': 'https://maps.apple.com/?address=301%20S%20Academy%20St,%20Cary,%20NC%2027511,%20United%20States&auid=166893308128289463&ll=35.784894,-78.780877&lsp=9902&q=The%20Mayton&_ext=CjIKBQgEEOIBCgQIBRADCgQIBhALCgQIChAACgQIUhADCgQIVRANCgQIWRABCgUIpAEQARImKREpF2Xi40FAMSvauX5QslPAOY/+PMEI5UFAQSHZdRCbsVPAUAQ%3D'
+        },
+        {
+            'image': springhill,
+            'name': 'Springhill\nSuites',
+            'website': 'https://www.marriott.com/en-us/hotels/rdurh-springhill-suites-raleigh-cary/overview/',
+            'location': 'https://maps.apple.com/?address=1128%20Ledsome%20Ln,%20Cary,%20NC%20%2027511,%20United%20States&auid=3649897677149774357&ll=35.761714,-78.748777&lsp=9902&q=SpringHIll%20Suites&_ext=CjIKBQgEEOIBCgQIBRADCgQIBhALCgQIChAACgQIUhADCgQIVRAQCgQIWRADCgUIpAEQARImKYloKmvs4EFAMTYsnxVGsFPAOQc+UMcS4kFAQT5k3bSQr1PAUAM%3D'
+        },
+        {
+            'image': homewood,
+            'name': 'Homewood\nSuites',
+            'website': 'https://www.hilton.com/en/locations/usa/north-carolina/cary/homewood',
+            'location': "https://maps.apple.com/?address=555%20Crossroads%20Blvd,%20Cary,%20NC%20%2027518,%20United%20States&auid=438233541865160812&ll=35.758184,-78.732827&lsp=9902&q=Homewood%20Suites%20by%20Hilton%20Raleigh%20Cary%20I-40&_ext=CjIKBQgEEOIBCgQIBRADCgQIBhALCgQIChAACgQIUhADCgQIVRAQCgQIWRADCgUIpAEQARImKdhOSuh/4EFAMQJi7GVBr1PAOVYkcESm4UFAQdZaGQeMrlPAUAM%3D"
+        },
+        {
+            'image': hyatt,
+            'name': 'Hyatt\nHouse',
+            'website': 'https://www.hyatt.com/en-US/shop/RDUXR?rooms=1&adults=2&checkinDate=2022-04-26&checkoutDate=2022-04-27&kids=0&currency=USD',
+            'location': "https://maps.apple.com/?address=10030%20Sellona%20St,%20Raleigh,%20NC%2027617,%20United%20States&auid=4448840612354890874&ll=35.895570,-78.806377&lsp=9902&q=Hyatt%20House%20Raleigh%20/%20Rdu%20/%20Brier%20Creek&_ext=CjIKBQgEEOIBCgQIBRADCgQIBhALCgQIChAACgQIUhADCgQIVRANCgQIWRABCgUIpAEQARIkKekvquwM8kFAMXsjGnn3s1PAOWcF0Egz80FAQUmJ/clBs1PA"
+        },
+    ],
 }
 
 const City: React.FC = () => {
@@ -165,6 +195,12 @@ const City: React.FC = () => {
                     <p className="poi-row-container-header">Fun</p>
                     <div className="poi-row">
                         { POIs['fun'].map((poi) => <OurCityPOI {...poi}/>) }
+                    </div>
+                </div>
+                <div className="poi-row-container">
+                    <p className="poi-row-container-header">Stay</p>
+                    <div className="poi-row">
+                        { POIs['stay'].map((poi) => <OurCityPOI {...poi}/>) }
                     </div>
                 </div>
             </div>
