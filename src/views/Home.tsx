@@ -12,13 +12,6 @@ const Home: React.FC = () => {
                 <img id="blobWithBranch" src={blobWithBranch}/>
                 <p id="blobText">JUNE&nbsp;24,&nbsp;2022<br/>CARY,&nbsp;NC</p>
             </div>
-            <div id="subContent">
-                <div id="line"/>
-                <p>We can't imagine saying "I do"<br/>without you</p>
-                <Link to="/invitee">
-                    <button><span>RSVP</span></button>
-                </Link>
-            </div>
         </div>
     )
 }

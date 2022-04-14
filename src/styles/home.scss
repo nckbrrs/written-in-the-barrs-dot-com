@@ -9,13 +9,13 @@
     transition: 1s;
 
     #hero-container {
-        margin: 2rem 0 2rem 0;
-        width: calc(30rem * 2);
-        height: 30rem;
+        margin: 4rem 0 2rem 0;
+        width: calc(35rem * 16/9);
+        height: 35rem;
         background-color: #ffffff;
         border-radius: 3.5rem;
         background: url('../assets/images/hero.jpeg');
-        background-position: center -6.8rem;
+        background-position: center -6.4rem;
         background-size: cover;
         position: relative;
         transition: 0.5s;
@@ -38,56 +38,27 @@
             bottom: -2.5rem;
         }
     }
+}
 
-    #subContent {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Weiss', script;
-        font-size: 1.75rem;
-        color: #A96D4F;
-        text-align: center;
-        text-transform: uppercase;
-
-        #line {
-            width: 1px;
-            height: 2.25rem;
-            background-color: #A96D4F;
-        }
-
-        button {
-            display: none; // kinda like this page without this button
-            border: none;
-            border-radius: 0.5rem;
-            background: #7DBCD8;
-            transition: 0.3s;
-            padding: 1rem;
-
-            &:hover {
-                background: #4988A3;
-                cursor: pointer;
-            }
-
-            span {
-                letter-spacing: 0.25rem;
-                font-family: 'Helvetica Neue', script;
-                text-transform: uppercase;
-                text-align: right;
-                color: white;
-                margin-right: -0.25rem;
-            }
+@media only screen and (max-width: 1200px) {
+    #home {
+        #hero-container {
+            height: calc(60rem * 1/1.162);
+            width: 60rem;
+            
+            background-size: 90rem;
         }
     }
 }
+
 
 @media only screen and (max-width: 800px) {
     #home {
         #hero-container {
             margin: 1rem 0 2rem 0;
-            width: 26rem;
+            width: 30rem;
             border-radius: 3rem;
-            height: calc(26rem * 4/3);
+            height: calc(26rem * 5/3);
             background-position: center -7.7rem;
             background-size: 245%;
 
@@ -103,10 +74,6 @@
                 right: 8.25rem;
                 bottom: -4rem;
             }
-        }
-
-        #subContent {
-            margin-top: 4rem;
         }
     }
 }
