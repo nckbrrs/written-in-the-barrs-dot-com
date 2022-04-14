@@ -45,7 +45,6 @@
         #hero-container {
             height: calc(60rem * 1/1.162);
             width: 60rem;
-            
             background-size: 90rem;
         }
     }
@@ -55,12 +54,12 @@
 @media only screen and (max-width: 800px) {
     #home {
         #hero-container {
-            margin: 1rem 0 2rem 0;
+            margin: 2rem 0 2rem 0;
             width: 30rem;
             border-radius: 3rem;
             height: calc(26rem * 5/3);
-            background-position: center -7.7rem;
-            background-size: 245%;
+            background-position: center -9.2rem;
+            background-size: 81rem;
 
             #blobWithBranch {
                 position: absolute;
