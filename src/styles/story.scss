@@ -78,6 +78,14 @@
                 .story-text {
                     width: 100%;
                     margin-bottom: 4rem;
+                    
+                    .content-title {
+                        font-size: 1.5rem;
+                    }
+                    
+                    .content-body {
+                        font-size: 1.25rem;
+                    }
                 }
             }
         }

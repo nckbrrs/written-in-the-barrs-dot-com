@@ -6,6 +6,7 @@ import AllInvitees from "./views/AllInvitees";
 import Home from "./views/Home";
 import Story from './views/Story';
 import People from './views/People';
+import City from './views/City';
 import RSVP from './views/RSVP';
 import Details from './views/Details';
 import './styles/globals.scss';
@@ -26,6 +27,9 @@ const App:React.FC = () => {
 					)}/>
 					<Route exact path="/people" render={() =>  (
 						<People/>
+					)}/>
+					<Route exact path="/city" render={() =>  (
+						<City/>
 					)}/>
 					<Route exact path="/invitee" render={() => (
 						<AddInvitee hasPlusOne={false}/>

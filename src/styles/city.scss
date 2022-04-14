@@ -1,0 +1,94 @@
+#city {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    animation: fadeIn 1.6s;
+    
+    #city-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        flex: auto;
+        
+        #header-container {
+            #header-p {
+                border-radius: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-family: 'Weiss', script;
+                font-size: 1.2rem;
+                background-color: #A96D4F;
+                aspect-ratio: 6/1;
+                padding: 0 2rem;
+                margin: 0 1rem 2rem;
+                
+                p {
+                    max-width: 60rem;
+                    color: #fff;
+                    
+                    span {
+                        color: #fff;
+                        font-size: 2rem;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        
+        .poi-row-container {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+            margin-bottom: 4rem;
+            
+            .poi-row-container-header {
+                text-transform: uppercase;
+                font-family: 'Weiss', script;
+                text-align: center;
+                font-size: 2rem;
+                font-weight: 800;
+                letter-spacing: 0.5rem;
+                color: #A96D4F;
+                margin-block-start: 0;
+                margin-block-end: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .poi-row {
+                display: flex;
+                flex-flow: row wrap;
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+        }
+        
+        
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #city {
+        #city-container {
+            margin: 0 4rem;
+            
+            .poi-row-container {
+                .poi-row-container-header {
+                    margin-bottom: 0;
+                }
+                
+                .poi-row {
+                    .poi {
+                        margin: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
