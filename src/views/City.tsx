@@ -119,7 +119,7 @@ const POIs = {
         },
         {
             'image': crabtree,
-            'name': 'Crabtree Valley\nMall',
+            'name': 'Crabtree\nValley Mall',
             'website': 'https://shopcrabtree.com',
             'location': "https://maps.apple.com/?address=4325%20Glenwood%20Ave,%20Raleigh,%20NC%20%2027612,%20United%20States&auid=4367200770715982651&ll=35.840118,-78.679186&lsp=9902&q=Crabtree%20Valley%20Mall&_ext=CjkKBQgEEOIBCgQIBRADCgUIBhCHAgoECAoQAAoECFIQCwoECFMQAwoECFUQDAoECFkQAQoFCKQBEAESJimiuanN9epBQDHI9QWP0qtTwDkgj88pHOxBQEFkfmkAHatTwFAE"
         },
