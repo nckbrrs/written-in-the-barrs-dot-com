@@ -4,15 +4,17 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
-    animation: fadeIn 1.6s;
     
     .content-header {
+        animation: fadeIn 1.6s;
+
         #line {
             background: #e9e9e9;
         }
     }
     
     #people-container {
+        animation: fadeIn 1.6s;
         display: flex;
         justify-content: space-between;
         width: 60rem;

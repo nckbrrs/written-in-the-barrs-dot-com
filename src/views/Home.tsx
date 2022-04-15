@@ -1,5 +1,4 @@
 import React from 'react';
-import  { Link } from 'react-router-dom';
 import SiteHeader from '../components/SiteHeader';
 import '../styles/home.scss';
 import blobWithBranch from '../assets/images/blobWithBranch.png';

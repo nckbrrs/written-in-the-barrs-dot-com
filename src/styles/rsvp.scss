@@ -5,7 +5,6 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
-    animation: fadeIn 1.6s;
     
     #temp {
         font-size: 3rem;
@@ -14,7 +13,12 @@
         flex: auto;
     }
     
+    .content-header {
+        animation: fadeIn 1.6s;
+    }
+    
     form {
+        animation: fadeIn 1.6s;
         flex: auto;
         
         .rsvpform-section {

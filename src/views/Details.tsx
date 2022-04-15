@@ -1,5 +1,6 @@
 import React from 'react';
 import SiteHeader from '../components/SiteHeader';
+import SiteFooter from '../components/SiteFooter';
 import ContentHeader from '../components/ContentHeader';
 import  { Link } from 'react-router-dom';
 import map from '../assets/images/map.png';
@@ -27,7 +28,10 @@ const Details: React.FC = () => {
                     <p id="addr">110 N WALKER ST, CARY, NC</p>
                 </div>
             </div>
-            <span id="rsvp-link"><Link to="/rsvp">RSVP</Link></span>
+            <div id="link-container">
+                <span id="rsvp-link"><Link to="/rsvp">RSVP</Link></span>
+            </div>
+            <SiteFooter/>
         </div>
     )
 }

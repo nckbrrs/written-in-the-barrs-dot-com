@@ -5,9 +5,13 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
-    animation: fadeIn 1.6s;
+    
+    .content-header {
+        animation: fadeIn 1.6s;
+    }
     
     #story-container {
+        animation: fadeIn 1.6s;
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
