@@ -46,7 +46,7 @@ const Hamburger:React.FC = () => {
             <Link to="/" onClick={() => toggleIsOpen()}>HOME</Link>
             {<Link to="/rsvp">RSVP</Link>}
             {<Link to="/details">DETAILS</Link>}
-            {/*<Link to="/">REGISTRY</Link>*/}
+            {<Link to="/registry">REGISTRY</Link>}
             <Link to="/story" onClick={() => toggleIsOpen()}>STORY</Link>
             <Link to="/people" onClick={() => toggleIsOpen()}>PEOPLE</Link>
             <Link to="/city">CITY</Link>
