@@ -7,11 +7,7 @@ const RSVPForm: React.FC = () => {
     const [hits, setHits] = useState<any[]>([]);
     const [hasClickedReview, setHasClickedReview] = useState<boolean>(false);
     const [submissionResponse, setSubmissionResponse] = useState<Response | null>(null);
-    
-    useEffect(() => {
-        setInvitee(null);
-        console.dir(invitee);
-    }, [])
+    const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false);
     
     const handleAcceptOrDeclineSelection = (who: string, day: string, selection: string) => {
         if (who === 'invitee') {
@@ -35,6 +31,7 @@ const RSVPForm: React.FC = () => {
     
     const handleSearch = async (event: any) => {
         event.preventDefault();
+        setIsLoadingSearch(true);
 
         if (inputtedFirstName.trim() === '' || inputtedLastName.trim() === '') {
             alert('Please be sure to fill in all required fields!');
@@ -46,6 +43,7 @@ const RSVPForm: React.FC = () => {
         const result = await res.json();
         console.dir(result);
         setHits(result ?? []);
+        setIsLoadingSearch(false);
     }
     
     const goToReview = async (event: any) => {
@@ -248,7 +246,7 @@ const RSVPForm: React.FC = () => {
                     <input name="firstName" placeholder="First Name" type="text" value={inputtedFirstName} onChange={(e) => setInputtedFirstName(e.target.value)}/>
                     <input name="lastName" placeholder="Last Name" type="text" value={inputtedLastName} onChange={(e) => setInputtedLastName(e.target.value)}/>
                 </div>
-                <button type="submit">Search</button>
+                <button type="submit">{isLoadingSearch ? 'Loading...' : 'Search'}</button>
             </>}
                 {hits.map((hit) => (
                     <div className="search-result" key={hit.entityId} onClick={() => setInvitee(hit)}>
@@ -261,7 +259,6 @@ const RSVPForm: React.FC = () => {
                 ))}
             </form>
         }
-        
         
         {/* Make selections */}
         {!hasClickedReview && invitee !== null && makeSelections()}
