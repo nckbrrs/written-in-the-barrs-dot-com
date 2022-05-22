@@ -10,6 +10,7 @@ import City from './views/City';
 import RSVP from './views/RSVP';
 import Details from './views/Details';
 import './styles/globals.scss';
+import Registry from "./views/Registry";
 
 const App:React.FC = () => {
 	return (
@@ -19,8 +20,14 @@ const App:React.FC = () => {
 					<Route exact path="/" render={() => (
 						<Home/>
 					)}/>
+					<Route exact path="/rsvp" render={() => (
+						<RSVP/>
+					)}/>
 					<Route exact path="/details" render={() => (
 						<Details/>
+					)}/>
+					<Route exact path="/registry" render={() => (
+						<Registry/>
 					)}/>
 					<Route exact path="/story" render={() => (
 						<Story/>
@@ -37,10 +44,7 @@ const App:React.FC = () => {
 					<Route exact path="/invitees" render={() => (
 						<AddInvitee hasPlusOne={true}/>
 					)}/>
-					{
-					<Route exact path="/rsvp" render={() => (
-						<RSVP/>
-					)}/>}
+					
 					<Route exact path="/allInvitees" render={() => (
 						<AllInvitees/>
 					)}/>

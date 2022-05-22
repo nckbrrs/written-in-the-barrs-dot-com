@@ -1,0 +1,36 @@
+#registry {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    
+    .content-header {
+        animation: fadeIn 1.6s;
+    }
+
+    .registry-container {
+        flex: auto;
+        
+        .registry-row {
+            // max-width: 40rem;
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .registry-row {
+        max-width: 40rem;
+
+        .item {
+            margin-bottom: 2rem;
+        }
+    }
+
+}

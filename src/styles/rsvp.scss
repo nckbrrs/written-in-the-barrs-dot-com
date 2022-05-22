@@ -74,6 +74,7 @@
                         box-shadow: 0 0 0 2px #C2986E;
                         color: #C2986E;
                         margin-top: .333rem;
+                        // box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
                         
                         &:hover, &.selected {
                             background-color: #C2986E;
@@ -131,6 +132,8 @@
             background: #C2986E;
             animation: fadeIn 1s;
             transition: 0.3s;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+
             
             &:first-of-type {
                 margin-top: 0;
@@ -144,6 +147,7 @@
         
         button {
             background-color: #C2986E;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             
             &:hover {
                 background-color: #A96D4F;

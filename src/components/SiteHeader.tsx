@@ -10,7 +10,7 @@ const Header: React.FC = () => {
             <div className="header-links">
                 <Link to="/rsvp"><span>RSVP</span></Link>
                 <Link to="/details"><span>DETAILS</span></Link>
-                {/*<Link to="/"><span>REGISTRY</span></Link>*/}
+                <Link to="/registry"><span>REGISTRY</span></Link>
             </div>
             <div id="header-logo">
                 <Link to="/">NICK&nbsp;<span>&</span>&nbsp;BROOKE</Link>

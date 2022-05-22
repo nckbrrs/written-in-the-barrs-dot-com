@@ -28,9 +28,9 @@ const Details: React.FC = () => {
                     <p id="addr">110 N WALKER ST, CARY, NC</p>
                 </div>
             </div>
-            <div id="link-container">
+            { false && <div id="link-container">
                 <span id="rsvp-link"><Link to="/rsvp">RSVP</Link></span>
-            </div>
+            </div> }
             <SiteFooter/>
         </div>
     )

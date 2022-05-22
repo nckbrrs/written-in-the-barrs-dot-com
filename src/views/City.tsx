@@ -164,15 +164,6 @@ const City: React.FC = () => {
             <SiteHeader/>
             <ContentHeader title={"OUR CITY"}/>
             <div id="city-container">
-                {false &&
-                <div id="header-container">
-                    <div id="header-p">
-                        <p><span>RALEIGH, NC</span>
-                        <br/><br/>
-                        The city where we became friends, more than friends, and fell in love. We love this place so much, and if you're coming in from out of town, we highly recommend sticking around a little longer and checking out a few of our favorite spots. We promise they won't disappoint.</p>
-                    </div>
-                </div>
-                }
                 <div className="poi-row-container">
                     <p className="poi-row-container-header">Coffee</p>
                     <div className="poi-row">
