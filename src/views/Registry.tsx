@@ -1,9 +1,9 @@
 import ContentHeader from "../components/ContentHeader";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
-import cb from '../assets/images/registry/cb.png';
-import target from '../assets/images/registry/target.png';
-import amazon from '../assets/images/registry/amazon.png';
+import cb from '../assets/images/registry/cb2.png';
+import target from '../assets/images/registry/target2.png';
+import amazon from '../assets/images/registry/amazon2.png';
 import RegistryItem from "../components/RegistryItem";
 import '../styles/registry.scss'
 
