@@ -77,7 +77,7 @@ const AllInvitees: React.FC = () => {
         return sum + manualAdditions.length;
     }
 
-    const calculateAllConfirmedWedding = () => {
+    const calculateAllConfirmedYesWedding = () => {
         let sum = 0;
 
         allInvitees.forEach((x) => {
@@ -104,7 +104,7 @@ const AllInvitees: React.FC = () => {
         return sum + manualAdditions.length;
     }
 
-    const calculateAllConfirmedRd = () => {
+    const calculateAllConfirmedYesRd = () => {
         let sum = 0;
 
         allInvitees.forEach((x) => {
@@ -133,6 +133,48 @@ const AllInvitees: React.FC = () => {
         return sum + manualAdditions.length;
     }
 
+    const calculateAllConfirmedNoWedding = () => {
+        let sum = 0;
+
+        allInvitees.forEach((x) => {
+            if (x.hasRsvpd) {
+                if (!x.isAttendingWedding) {
+                    sum++;
+                }
+
+                if (x.hasPlusOne && !x.isBringingPlusOneToWedding) {
+                    sum++;
+                }
+            }
+        })
+
+        let manualAdditions = [
+            'Sally'
+        ]
+
+        return sum + manualAdditions.length;
+    }
+
+    const calculateAllConfirmedNoRd = () => {
+        let sum = 0;
+
+        allInvitees.forEach((x) => {
+            if (x.isInvitedToRehearsalDinner) {
+                if (x.hasRsvpd) {
+                    if (!x.isAttendingRehearsalDinner) {
+                        sum++;
+                    }
+
+                    if (x.hasPlusOne && !x.isBringingPlusOneToRehearsalDinner) {
+                        sum++;
+                    }
+                }
+            }
+        })
+
+        return sum;
+    }
+
     return (
         <div id="allInvitees">
             <SiteHeader/>
@@ -151,8 +193,12 @@ const AllInvitees: React.FC = () => {
                         TOTAL INVITED RD: {calcualteAllInvitedRd()}&nbsp;
                     </p>
                     <p>
-                        TOTAL CONFIRMED WEDDING: {calculateAllConfirmedWedding()}&nbsp;/
-                        TOTAL CONFIRMED RD: {calculateAllConfirmedRd()}
+                        TOTAL CONFIRMED YES WEDDING: {calculateAllConfirmedYesWedding()}&nbsp;/
+                        TOTAL CONFIRMED YES RD: {calculateAllConfirmedYesRd()}
+                    </p>
+                    <p>
+                        TOTAL CONFIRMED NO WEDDING: {calculateAllConfirmedNoWedding()}&nbsp;/
+                        TOTAL CONFIRMED NO RD: {calculateAllConfirmedNoRd()}
                     </p>
                 </div>
                 <table className="parent-table" style={{paddingLeft: 20, paddingRight: 20, marginTop: 20}}>
