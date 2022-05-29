@@ -46,11 +46,11 @@ const AllInvitees: React.FC = () => {
             }
             {   enteredPassword === process.env.REACT_APP_NANDB_PW &&<>
                 { true && allInvitees.length !== 0 && 
-                <table style={{paddingLeft: 20, paddingRight: 20}}>
+                <table style={{paddingLeft: 20, paddingRight: 20, marginTop: -30}}>
                     <tr style={{textAlign: 'left', display: 'flex', flexFlow: 'row nowrap', alignItems: 'flex-start'}}>
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>{'Invitee(s)'}</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
@@ -61,7 +61,7 @@ const AllInvitees: React.FC = () => {
 
                                     return (
                                         <tr>
-                                            <td style={{height: 50, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', alignItems: 'center'}}>
                                                 {name}
                                             </td>
                                         </tr>
@@ -69,16 +69,17 @@ const AllInvitees: React.FC = () => {
                                 })}
                             </table>
                         </td>
-                        <td>
+
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Email</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
                                     return (
                                         <tr>
-                                            <td style={{height: 50, paddingBottom: 10, display: 'flex', alignItems: 'flex-start'}}>
-                                                {x.emailAddress}
+                                            <td style={{height: 60, display: 'flex', alignItems: 'center'}}>
+                                                {x.emailAddress.toLowerCase()}
                                             </td>
                                         </tr>
                                     )
@@ -86,15 +87,15 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
 
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Phone</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
                                     return (
                                         <tr>
-                                            <td style={{height: 50, paddingBottom: 10, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, width: 100, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {x.phoneNumber}
                                             </td>
                                         </tr>
@@ -103,16 +104,16 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
                         
-                        <td style={{width: 300, paddingLeft: 20, paddingRight: 20}}>
+                        <td className="column" style={{width: 300}}>
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Address</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
                                     let address = `${x.address1} ${x.address2} ${x.city} ${x.state} ${x.zipCode}`
                                     return (
                                         <tr>
-                                            <td style={{height: 50, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {address}
                                             </td>
                                         </tr>
@@ -121,9 +122,9 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
 
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Invited 2 Wedding #</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
@@ -133,7 +134,7 @@ const AllInvitees: React.FC = () => {
                                     }
                                     return (
                                         <tr>
-                                            <td style={{height: 50, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numInvitedWedding}
                                             </td>
                                         </tr>
@@ -142,13 +143,13 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
                         
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Invited 2 RD #</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
-                                    let numInvitedRD = 0;
+                                    let numInvitedRD: any = 0;
                                     if (x.isInvitedToRehearsalDinner) {
                                         numInvitedRD++;
             
@@ -157,9 +158,13 @@ const AllInvitees: React.FC = () => {
                                         }
                                     }
 
+                                    if (!x.isInvitedToRehearsalDinner) {
+                                        numInvitedRD = 'not invited'
+                                    }
+
                                     return (
                                         <tr>
-                                            <td style={{height: 50, paddingBottom: 10, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numInvitedRD}
                                             </td>
                                         </tr>
@@ -168,15 +173,15 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
 
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Has RSVPd</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
                                     return (
                                         <tr>
-                                            <td style={{height: 50, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                                 {x.hasRsvpd ? '-------->' : 'no response'}
                                             </td>
                                         </tr>
@@ -185,9 +190,9 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
 
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Attending Wedding</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
@@ -207,7 +212,7 @@ const AllInvitees: React.FC = () => {
 
                                     return (
                                         <tr>
-                                            <td style={{height: 50, paddingBottom: 10, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numAttendingWedding}
                                             </td>
                                         </tr>
@@ -217,9 +222,9 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
 
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Attending RD</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
@@ -243,7 +248,7 @@ const AllInvitees: React.FC = () => {
 
                                     return (
                                         <tr>
-                                            <td style={{height: 50, paddingBottom: 10, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numAttendingRD}
                                             </td>
                                         </tr>
@@ -253,21 +258,20 @@ const AllInvitees: React.FC = () => {
                             </table>
                         </td>
 
-                        <td>
+                        <td className="column">
                             <table>
-                                <tr style={{display: 'flex', height: 50, paddingBottom: 10, alignItems: 'flex-end'}}>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
                                     <th>Dietary Restrictions</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
                                     return (
                                         <tr>
-                                            <td style={{height: 50, display: 'flex', alignItems: 'flex-start'}}>
+                                            <td style={{height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {x.dietaryRestrictions === '' ? 'none' : x.dietaryRestrictions}
                                             </td>
                                         </tr>
                                     )
                                 })}
-
                             </table>
                         </td>
                     </tr>
