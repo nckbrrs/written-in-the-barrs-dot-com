@@ -31,23 +31,148 @@ const AllInvitees: React.FC = () => {
         getAllInvitees();
     }, []);
 
+    const calculateAllInvitedWedding = () => {
+        let sum = 0;
+
+        allInvitees.forEach((x) => {
+            sum++;
+            if (x.hasPlusOne) sum++;
+        })
+
+        let manualAdditions = [
+            'Caden',
+            'Gabe',
+            'Ella',
+            'Sally',
+            'Hannah',
+            'Wes',
+            'Brady',
+        ]
+
+        return sum + manualAdditions.length;
+    }
+
+    const calcualteAllInvitedRd = () => {
+        let sum = 0;
+        
+        allInvitees.forEach((x) => {
+            if (x.isInvitedToRehearsalDinner) {
+                sum++;
+
+                if (x.hasPlusOne) {
+                    sum++;
+                }
+            }
+        })
+
+        let manualAdditions = [
+            'Caden',
+            'Gabe',
+            'Ella',
+            'Hannah',
+            'Wes',
+            'Brady',
+        ]
+
+        return sum + manualAdditions.length;
+    }
+
+    const calculateAllConfirmedWedding = () => {
+        let sum = 0;
+
+        allInvitees.forEach((x) => {
+            if (x.hasRsvpd) {
+                if (x.isAttendingWedding) {
+                    sum++;
+                }
+
+                if (x.hasPlusOne && x.isBringingPlusOneToWedding) {
+                    sum++;
+                }
+            }
+        })
+
+        let manualAdditions = [
+            'Caden',
+            'Gabe',
+            'Ella',
+            'Hannah',
+            'Wes',
+            'Brady',
+        ]
+
+        return sum + manualAdditions.length;
+    }
+
+    const calculateAllConfirmedRd = () => {
+        let sum = 0;
+
+        allInvitees.forEach((x) => {
+            if (x.isInvitedToRehearsalDinner) {
+                if (x.hasRsvpd) {
+                    if (x.isAttendingRehearsalDinner) {
+                        sum++;
+                    }
+
+                    if (x.hasPlusOne && x.isBringingPlusOneToRehearsalDinner) {
+                        sum++;
+                    }
+                }
+            }
+        })
+
+        let manualAdditions = [
+            'Caden',
+            'Gabe',
+            'Ella',
+            'Hannah',
+            'Wes',
+            'Brady',
+        ]
+
+        return sum + manualAdditions.length;
+    }
+
     return (
         <div id="allInvitees">
             <SiteHeader/>
             <ContentHeader title={`${loading ? `loading...` : `ALL RESPONSES IN DATABASE (${allInvitees.length})`}`}/>
-            { !loading && <>
-            {   enteredPassword !== process.env.REACT_APP_NANDB_PW &&
+            { !loading && enteredPassword !== process.env.REACT_APP_NANDB_PW ? (
                 <form style={{display: 'flex', flexDirection: 'column', flex: 'auto'}}>
                     <p>Password</p>
                     <div className="formRow">
                         <input name="password" placeholder="password" type="text" value={enteredPassword} onChange={(event) => setEnteredPassword(event.target.value)}/>
                     </div>
                 </form>
-            }
-            {   enteredPassword === process.env.REACT_APP_NANDB_PW &&<>
-                { true && allInvitees.length !== 0 && 
-                <table style={{paddingLeft: 20, paddingRight: 20, marginTop: -30}}>
+            ) : (<>
+                <div style={{textAlign: 'center', fontWeight: 'bold'}}>
+                    <p>
+                        TOTAL INVITED WEDDING: {calculateAllInvitedWedding()}&nbsp;/
+                        TOTAL INVITED RD: {calcualteAllInvitedRd()}&nbsp;
+                    </p>
+                    <p>
+                        TOTAL CONFIRMED WEDDING: {calculateAllConfirmedWedding()}&nbsp;/
+                        TOTAL CONFIRMED RD: {calculateAllConfirmedRd()}
+                    </p>
+                </div>
+                <table className="parent-table" style={{paddingLeft: 20, paddingRight: 20, marginTop: 20}}>
                     <tr style={{textAlign: 'left', display: 'flex', flexFlow: 'row nowrap', alignItems: 'flex-start'}}>
+                        <td className="column">
+                            <table>
+                                <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
+                                    <th>ID</th>
+                                </tr>
+                                {allInvitees.map((x: any) => {
+                                    return (
+                                        <tr>
+                                            <td style={{height: 90, display: 'flex', alignItems: 'center'}}>
+                                                {x.entityId}
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </table>
+                        </td>
                         <td className="column">
                             <table>
                                 <tr style={{display: 'flex', height: 50, alignItems: 'flex-end'}}>
@@ -61,7 +186,7 @@ const AllInvitees: React.FC = () => {
 
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', alignItems: 'center'}}>
+                                            <td style={{height: 90, display: 'flex', alignItems: 'center'}}>
                                                 {name}
                                             </td>
                                         </tr>
@@ -76,10 +201,17 @@ const AllInvitees: React.FC = () => {
                                     <th>Email</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
+                                    let atLocation = x.emailAddress.indexOf('@');
+
+                                    let firstPartOfEmail = x.emailAddress.slice(0, atLocation);
+                                    let domain = x.emailAddress.slice(atLocation);
+
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', alignItems: 'center'}}>
-                                                {x.emailAddress.toLowerCase()}
+                                            <td style={{height: 90, width: 'auto', display: 'flex', wordBreak: 'break-all', alignItems: 'center'}}>
+                                                {firstPartOfEmail}
+                                                <br/>
+                                                {domain}
                                             </td>
                                         </tr>
                                     )
@@ -95,7 +227,7 @@ const AllInvitees: React.FC = () => {
                                 {allInvitees.map((x: any) => {
                                     return (
                                         <tr>
-                                            <td style={{height: 60, width: 100, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                            <td style={{height: 90, width: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {x.phoneNumber}
                                             </td>
                                         </tr>
@@ -113,7 +245,7 @@ const AllInvitees: React.FC = () => {
                                     let address = `${x.address1} ${x.address2} ${x.city} ${x.state} ${x.zipCode}`
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                            <td style={{height: 90, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {address}
                                             </td>
                                         </tr>
@@ -134,7 +266,7 @@ const AllInvitees: React.FC = () => {
                                     }
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                            <td style={{height: 90, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numInvitedWedding}
                                             </td>
                                         </tr>
@@ -164,7 +296,7 @@ const AllInvitees: React.FC = () => {
 
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
+                                            <td style={{height: 90, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numInvitedRD}
                                             </td>
                                         </tr>
@@ -181,8 +313,8 @@ const AllInvitees: React.FC = () => {
                                 {allInvitees.map((x: any) => {
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
-                                                {x.hasRsvpd ? '-------->' : 'no response'}
+                                            <td style={{height: 90, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
+                                                {x.hasRsvpd ? '–––––>' : 'no response'}
                                             </td>
                                         </tr>
                                     )
@@ -196,7 +328,7 @@ const AllInvitees: React.FC = () => {
                                     <th>Attending Wedding</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
-                                    let numAttendingWedding: any = '???'
+                                    let numAttendingWedding: any = '???????'
                                     if (x.hasRsvpd) {
                                         let attendingWedding = 0;
                                         if (x.isAttendingWedding) {
@@ -212,7 +344,7 @@ const AllInvitees: React.FC = () => {
 
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
+                                            <td style={{height: 90, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numAttendingWedding}
                                             </td>
                                         </tr>
@@ -228,7 +360,7 @@ const AllInvitees: React.FC = () => {
                                     <th>Attending RD</th>
                                 </tr>
                                 {allInvitees.map((x: any) => {
-                                    let numAttendingRD: any = '???'
+                                    let numAttendingRD: any = '???????'
                                     if (x.hasRsvpd) {
                                         let attendingRD = 0;
                                         if (x.isAttendingRehearsalDinner) {
@@ -248,7 +380,7 @@ const AllInvitees: React.FC = () => {
 
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
+                                            <td style={{height: 90, display: 'flex', textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                                 {numAttendingRD}
                                             </td>
                                         </tr>
@@ -266,7 +398,7 @@ const AllInvitees: React.FC = () => {
                                 {allInvitees.map((x: any) => {
                                     return (
                                         <tr>
-                                            <td style={{height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                            <td style={{height: 90, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                                 {x.dietaryRestrictions === '' ? 'none' : x.dietaryRestrictions}
                                             </td>
                                         </tr>
@@ -276,43 +408,8 @@ const AllInvitees: React.FC = () => {
                         </td>
                     </tr>
                 </table>
-                /*
-                        
-
-                        
-
-                        
-
-                        
-
-                        return <>
-                            <tr>
-                                <td>{name}</td>
-                                <td>{x.emailAddress}</td>
-                                <td>{x.phoneNumber}</td>
-                                <td>{address}</td>
-                                <td>{numInvitedWedding}</td>
-                                <td>{numInvitedRD}</td>
-                                <td>{x.hasRsvpd ? 'yes' : 'no'}</td>
-                                <td>{numAttendingWedding}</td>
-                                <td>{numAttendingRD}</td>
-                                <td>{x.dietaryRestrictions === '' ? 'n/a' : x.dietaryRestrictions}</td>
-                            </tr>
-                        </>
-                    })}
-                </table>
-                */
-                }
-                { false && allInvitees.map((response: any, index: number) => (
-                    <div className="response" key={response.entityId}>
-                        <p className="responseName">{response.entityId}</p>
-                        <p className="responseName">{index+2}. {capitalizeFirstLetter(response.firstName.trim())} {capitalizeFirstLetter(response.lastName.trim())} { response.hasPlusOne ? ` and ${response.plusOneFirstName.trim()} ${response.plusOneLastName.trim()}` : ``}</p>
-                        <p className="responseAddrDigital">{response.emailAddress} / {response.phoneNumber}</p>
-                        <p className="responseAddrPhysical">{`${response.address1.trim()}${response.address2.trim() !== "" ? " " + response.address2.trim() : ''}`}<br/>{response.city.trim()}, {response.state.trim()} {response.zipCode.trim()}</p>
-                    </div>
-                ))}</>
-            }
-            </>}
+                </>
+            )}
             <SiteFooter/>
         </div>
     )
