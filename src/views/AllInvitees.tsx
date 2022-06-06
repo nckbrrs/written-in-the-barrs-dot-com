@@ -47,6 +47,8 @@ const AllInvitees: React.FC = () => {
             'Hannah',
             'Wes',
             'Brady',
+            'Nick',
+            'Brooke'
         ]
 
         return sum + manualAdditions.length;
@@ -72,6 +74,8 @@ const AllInvitees: React.FC = () => {
             'Hannah',
             'Wes',
             'Brady',
+            'Nick',
+            'Brooke'
         ]
 
         return sum + manualAdditions.length;
@@ -99,6 +103,8 @@ const AllInvitees: React.FC = () => {
             'Hannah',
             'Wes',
             'Brady',
+            'Nick',
+            'Brooke'
         ]
 
         return sum + manualAdditions.length;
@@ -128,6 +134,8 @@ const AllInvitees: React.FC = () => {
             'Hannah',
             'Wes',
             'Brady',
+            'Nick',
+            'Brooke'
         ]
 
         return sum + manualAdditions.length;
