@@ -48,7 +48,10 @@ const AllInvitees: React.FC = () => {
             'Wes',
             'Brady',
             'Nick',
-            'Brooke'
+            'Brooke',
+            'Britney Kid 1',
+            'Britney Kid 2',
+            'Britney Kid 3',
         ]
 
         return sum + manualAdditions.length;
@@ -102,9 +105,11 @@ const AllInvitees: React.FC = () => {
             'Ella',
             'Hannah',
             'Wes',
-            'Brady',
             'Nick',
-            'Brooke'
+            'Brooke',
+            'Britney Kid 1',
+            'Britney Kid 2',
+            'Britney Kid 3',
         ]
 
         return sum + manualAdditions.length;
@@ -133,7 +138,6 @@ const AllInvitees: React.FC = () => {
             'Ella',
             'Hannah',
             'Wes',
-            'Brady',
             'Nick',
             'Brooke'
         ]
@@ -157,7 +161,8 @@ const AllInvitees: React.FC = () => {
         })
 
         let manualAdditions = [
-            'Sally'
+            'Sally',
+            'Brady',
         ]
 
         return sum + manualAdditions.length;
@@ -180,7 +185,11 @@ const AllInvitees: React.FC = () => {
             }
         })
 
-        return sum;
+        let manualAdditions = [
+            'Brady',
+        ]
+
+        return sum + manualAdditions.length;
     }
 
     const [onlyShowInvitedToRd, setOnlyShowInvitedToRd] = useState(false);
