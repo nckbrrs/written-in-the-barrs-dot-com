@@ -20,7 +20,7 @@ const Details: React.FC = () => {
                 <div id="datetime">
                     <img src={clock}/>
                     <p id="date">JUNE 24, 2022</p>
-                    <p id="time">TO BE DETERMINED</p>
+                    <p id="time">4:30 <span style={{fontSize: '0.75em'}}>PM</span></p>
                 </div>
                 <div id="location">
                     <img src={location}/>
