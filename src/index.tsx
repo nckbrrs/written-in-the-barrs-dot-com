@@ -11,6 +11,7 @@ import RSVP from './views/RSVP';
 import Details from './views/Details';
 import './styles/globals.scss';
 import Registry from "./views/Registry";
+import ParkingGuide from './assets/images/parkingGuide.pdf';
 
 const App:React.FC = () => {
 	return (
@@ -44,9 +45,13 @@ const App:React.FC = () => {
 					<Route exact path="/invitees" render={() => (
 						<AddInvitee hasPlusOne={true}/>
 					)}/>
-					
 					<Route exact path="/allInvitees" render={() => (
 						<AllInvitees/>
+					)}/>
+					<Route exact path="/parkingGuide" render={() => (
+						<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+							<img src={ParkingGuide} style={{width: '50%'}}/>
+						</div>
 					)}/>
 					<Route path="*" render={() => (
 						<Redirect to="/"/>
