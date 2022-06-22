@@ -49,7 +49,7 @@ const App:React.FC = () => {
 						<AllInvitees/>
 					)}/>
 					<Route exact path="/parkingGuide" render={() => (
-						<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+						<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white'}}>
 							<img src={ParkingGuide} style={{width: '50%'}}/>
 						</div>
 					)}/>
